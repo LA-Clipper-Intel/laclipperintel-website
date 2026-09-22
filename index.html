@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>LA Clipper Intel</title>
+<meta name="description" content="LA Clipper Intel pulls the hottest Clippers takes, trade breakdowns, and throwbacks all into one website. Watch on YouTube, follow everywhere else.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{color-scheme:dark;}
+  *{box-sizing:border-box;}
+  body{margin:0;
+    --ink:#0D1730; --surface:#141F3D; --surface-2:#1B2A52; --line:#2A3B66;
+    --red:#E32C40; --blue:#3E6CC9; --gold:#CDAA66; --cream:#F1E8D6;
+    --text:#EDF0F7; --muted:#93A0C0;
+    background:var(--ink); color:var(--text); font-family:'Inter',system-ui,sans-serif; padding-left:16px; padding-right:16px;}
+  .wrap{max-width:1180px; margin:0 auto;}
+  .display{font-family:'Oswald',system-ui,sans-serif; text-transform:uppercase; letter-spacing:.02em; text-wrap:balance;}
+  .mono{font-family:'JetBrains Mono',monospace; font-variant-numeric:tabular-nums;}
+  a{color:inherit;} img{max-width:100%; display:block;}
+
+  .appbar{position:sticky; top:0; z-index:60; background:rgba(13,23,48,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); margin:0 -16px;}
+  .appbar-in{max-width:1180px; margin:0 auto; padding:12px 16px; display:flex; align-items:center; justify-content:space-between; gap:14px;}
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand img{width:38px; height:38px; border-radius:50%; object-fit:cover; border:1px solid var(--line);}
+  .brand .name{font-family:'Oswald'; font-size:1.25rem; letter-spacing:.03em; text-transform:uppercase;}
+  .appbar-actions{display:flex; gap:10px; align-items:center;}
+  .icon-btn{width:38px; height:38px; border-radius:50%; background:var(--surface); border:1px solid var(--line); display:grid; place-items:center; cursor:pointer; text-decoration:none; font:inherit; color:var(--text);}
+  .applinks{display:flex; gap:20px; font-size:.85rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em;}
+  .applinks a{color:var(--muted); text-decoration:none; padding-block:4px; border-bottom:2px solid transparent;}
+  .applinks a:hover{color:var(--text); border-color:var(--red);}
+  .menu-btn{display:none;}
+  @media (max-width:820px){.applinks{display:none;} .menu-btn{display:grid;}}
+  #mobileMenu{display:none; flex-direction:column; gap:2px; padding:8px 16px 14px; border-top:1px solid var(--line); max-width:1180px; margin:0 auto;}
+  #mobileMenu.open{display:flex;}
+  #mobileMenu a{color:var(--muted); text-decoration:none; padding:12px 4px; font-weight:600; text-transform:uppercase; font-size:.85rem; border-bottom:1px solid var(--line);}
+
+  .ticker{background:var(--surface-2); border-top:1px solid var(--line); border-bottom:1px solid var(--line); overflow:hidden; margin:0 -16px;}
+  .ticker-in{max-width:1180px; margin:0 auto; display:flex; align-items:center;}
+  .ttag{flex:none; background:var(--gold); color:#241900; font-weight:800; font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; padding:6px 12px; display:flex; align-items:center; gap:6px;}
+  .ttag .dot{width:6px; height:6px; border-radius:50%; background:#241900; animation:pulse 1.3s infinite;}
+  @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.2;}}
+  .ttrack{display:flex; white-space:nowrap; animation:scroll 40s linear infinite; padding:7px 0; font-size:.82rem;}
+  @media (prefers-reduced-motion:reduce){.ttrack{animation:none; overflow-x:auto;}}
+  .ttrack span{padding:0 24px; border-right:1px solid var(--line);}
+  .ttrack b{color:var(--gold); margin-right:8px; font-family:'JetBrains Mono';}
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  .hero{padding:26px 0 10px;}
+  .hero-banner{position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--line); aspect-ratio:1024/572; margin-bottom:22px;}
+  .hero-banner img{width:100%; height:100%; object-fit:cover;}
+  .hero-banner .scrim{position:absolute; inset:0; background:linear-gradient(0deg, rgba(13,23,48,.92) 0%, transparent 55%);}
+  .hero-tag{position:absolute; left:18px; bottom:14px; font-family:'JetBrains Mono'; font-size:.7rem; color:var(--gold); text-transform:uppercase; letter-spacing:.08em;}
+  .hero h1{font-size:clamp(2.2rem,6.5vw,3.8rem); line-height:.98; margin:0 0 12px;}
+  .hero h1 span{color:var(--red);}
+  .hero p{color:var(--muted); max-width:54ch; font-size:1rem; margin:0 0 20px;}
+  .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-bottom:8px;}
+  .btn{padding:13px 22px; border-radius:999px; font-weight:700; font-size:.85rem; text-decoration:none; display:inline-flex; align-items:center; gap:8px;}
+  .btn.solid{background:var(--red); color:#fff;}
+  .btn.solid:hover{background:#c11c2f;}
+  .btn.line{border:1px solid var(--line); color:var(--text);}
+  .btn.line:hover{border-color:var(--gold);}
+
+  section{padding:30px 0;}
+  .section-head{display:flex; align-items:baseline; justify-content:space-between; gap:14px; margin-bottom:18px; flex-wrap:wrap;}
+  .section-head h2{font-family:'Oswald'; font-size:1.7rem; letter-spacing:.02em; margin:0; text-transform:uppercase;}
+  .section-head span{color:var(--muted); font-family:'JetBrains Mono'; font-size:.75rem; text-transform:uppercase;}
+
+  .reelrow{display:grid; grid-template-columns:repeat(5,1fr); gap:12px;}
+  @media (max-width:980px){.reelrow{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:600px){.reelrow{grid-template-columns:repeat(2,1fr);}}
+  .reel{position:relative; aspect-ratio:9/16; border-radius:14px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(160deg,var(--surface-2),#0a1024); text-decoration:none; color:#fff;}
+  .reel::before{content:''; position:absolute; inset:0; background:radial-gradient(circle at 30% 20%, rgba(227,44,64,.35), transparent 55%);}
+  .reel .plat{position:absolute; top:8px; left:8px; background:rgba(0,0,0,.55); font-size:.65rem; font-weight:700; padding:4px 8px; border-radius:6px; text-transform:uppercase; letter-spacing:.04em; z-index:2;}
+  .reel .rplay{position:absolute; inset:0; display:grid; place-items:center; z-index:1;}
+  .reel .rplay span{width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.35); display:grid; place-items:center;}
+  .reel .rplay svg{width:16px; height:16px; fill:#fff; margin-left:2px;}
+  .reel .rtitle{position:absolute; left:10px; right:10px; bottom:10px; font-size:.8rem; font-weight:700; line-height:1.25; z-index:2;}
+  .reel .rviews{position:absolute; left:10px; bottom:38px; font-family:'JetBrains Mono'; font-size:.68rem; color:var(--gold); z-index:2;}
+
+  .yhub{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:22px; display:grid; grid-template-columns:1.2fr 1fr; gap:22px;}
+  @media (max-width:860px){.yhub{grid-template-columns:1fr;}}
+  .yplayer{aspect-ratio:16/9; border-radius:12px; background:linear-gradient(150deg,var(--surface-2),#0a1024); position:relative; overflow:hidden; border:1px solid var(--line);}
+  .yplayer::after{content:''; position:absolute; inset:0; background:radial-gradient(circle at 70% 70%, rgba(62,108,201,.35), transparent 55%);}
+  .yplayer .cp{position:absolute; inset:0; display:grid; place-items:center;}
+  .yplayer .cp span{width:64px; height:64px; border-radius:50%; background:rgba(227,44,64,.9); display:grid; place-items:center;}
+  .yplayer .cp svg{width:22px; height:22px; fill:#fff; margin-left:3px;}
+  .ylist{display:flex; flex-direction:column; gap:10px;}
+  .yitem{display:flex; gap:10px; text-decoration:none; color:var(--text); align-items:center;}
+  .yitem .thumb{width:88px; aspect-ratio:16/9; border-radius:8px; flex:none; background:linear-gradient(140deg,var(--surface-2),#0a1024); border:1px solid var(--line);}
+  .yitem h4{margin:0 0 4px; font-size:.88rem; font-weight:700; line-height:1.3;}
+  .yitem .m{color:var(--muted); font-size:.72rem; font-family:'JetBrains Mono';}
+
+  .gmwrap{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:24px; display:grid; grid-template-columns:1fr 1fr; gap:26px; align-items:center;}
+  @media (max-width:800px){.gmwrap{grid-template-columns:1fr;}}
+  .gm-num{font-family:'Oswald'; font-size:3rem; color:var(--gold); line-height:1;}
+  .gm-sub{color:var(--muted); font-size:.85rem; margin-top:4px;}
+  .gm-stats{display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin-top:16px;}
+  .gm-tile{background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:12px; text-align:center;}
+  .gm-tile .v{font-family:'JetBrains Mono'; font-weight:700;}
+  .gm-tile .l{color:var(--muted); font-size:.68rem; text-transform:uppercase; margin-top:2px;}
+  .slider-wrap label{font-size:.78rem; color:var(--muted); display:flex; justify-content:space-between; margin-bottom:6px;}
+  input[type=range]{width:100%; accent-color:var(--red); margin-bottom:16px;}
+  .gm-out{font-family:'JetBrains Mono'; background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:12px; font-size:.85rem;}
+
+  .sgrid{display:grid; grid-template-columns:repeat(6,1fr); gap:12px;}
+  @media (max-width:900px){.sgrid{grid-template-columns:repeat(3,1fr);}}
+  @media (max-width:480px){.sgrid{grid-template-columns:repeat(2,1fr);}}
+  .scard{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center; text-decoration:none; color:var(--text); display:flex; flex-direction:column; align-items:center; gap:6px;}
+  .scard:hover{border-color:var(--gold);}
+  .scard.featured{border-color:var(--red); background:var(--surface-2);}
+  .takegrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px;}
+  .takecard{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px; display:flex; flex-direction:column; gap:10px;}
+  .takecard .kicker{font-family:'JetBrains Mono'; color:var(--red); font-size:.72rem; text-transform:uppercase; letter-spacing:.06em;}
+  .takecard h3{margin:0; font-size:1.1rem; font-family:'Inter'; font-weight:800; text-transform:none; line-height:1.3;}
+  .takecard p{margin:0; color:var(--muted); font-size:.88rem; line-height:1.55;}
+  .takecard a.more{margin-top:auto; font-family:'JetBrains Mono'; font-size:.75rem; color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold); align-self:flex-start;}
+  .breaking-banner{background:var(--surface); border:1px solid var(--red); border-left:4px solid var(--red); border-radius:14px; padding:20px 22px; margin-bottom:18px;}
+  .breaking-banner .btag{font-family:'JetBrains Mono'; background:var(--red); color:#fff; font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; padding:4px 10px; border-radius:4px; display:inline-block; margin-bottom:10px;}
+  .breaking-banner h3{margin:0 0 8px; font-size:1.3rem; font-family:'Inter'; font-weight:800; text-transform:none; line-height:1.3;}
+  .breaking-banner p{margin:0 0 10px; color:var(--muted); font-size:.92rem; line-height:1.6; max-width:80ch;}
+  .breaking-banner a.more{font-family:'JetBrains Mono'; font-size:.78rem; color:var(--gold); text-decoration:none; border-bottom:1px solid var(--gold);}
+  .scard svg{width:28px; height:28px;}
+  .scard .n{font-weight:700; font-size:.82rem;}
+  .scard .h{font-size:.68rem; color:var(--muted);}
+
+  .band{background:linear-gradient(120deg,var(--surface),#0a1024); border:1px solid var(--line); border-radius:18px; padding:30px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;}
+  .band h3{font-family:'Oswald'; font-size:1.5rem; margin:0 0 4px; letter-spacing:.02em; text-transform:uppercase;}
+  .band p{margin:0; color:var(--muted); font-size:.88rem;}
+  form.sub{display:flex; gap:10px; flex-wrap:wrap;}
+  form.sub input{background:var(--surface-2); border:1px solid var(--line); color:var(--text); padding:12px 14px; border-radius:999px; min-width:210px;}
+  form.sub button{border:none; cursor:pointer;}
+
+  footer{border-top:1px solid var(--line); padding:26px 0 40px; color:var(--muted); font-size:.82rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+</style>
+</head>
+<body>
+
+<header class="appbar">
+  <div class="appbar-in">
+    <div class="brand"><img src="assets/logo.jpg" alt="LA Clipper Intel logo"><span class="name">LA Clipper Intel</span></div>
+    <nav class="applinks">
+      <a href="#takes">Takes</a>
+      <a href="#youtube">Videos</a>
+      <a href="#gm">Cap Room</a>
+      <a href="#social">Follow</a>
+    </nav>
+    <div class="appbar-actions">
+      <a class="icon-btn" href="https://www.youtube.com/@LAClipperIntel" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
+    </div>
+  </div>
+  <div id="mobileMenu">
+    <a href="#takes">Takes</a>
+    <a href="#youtube">Videos</a>
+    <a href="#gm">Cap Room</a>
+    <a href="#social">Follow</a>
+  </div>
+</header>
+
+<div class="ticker">
+  <div class="ticker-in">
+    <div class="ttag"><span class="dot"></span>Live</div>
+    <div class="ttrack" id="ttrack"></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <section class="hero">
+    <div class="hero-banner">
+      <img src="assets/banner.jpg" alt="LA Clipper Intel banner">
+      <div class="scrim"></div>
+      <div class="hero-tag">Trade Intel · Cap Breakdowns · Franchise Throwbacks</div>
+    </div>
+    <h1 class="display">One Site. <span>Every</span> Take.</h1>
+    <p>LA Clipper Intel pulls the hottest Clippers takes, trade breakdowns, and throwbacks all into one website — the deep-dive version of the take you saw in a 30-second clip.</p>
+    <div class="hero-actions">
+      <a class="btn solid" href="#takes">Start Reading</a>
+      <a class="btn line" href="https://www.youtube.com/@LAClipperIntel" target="_blank" rel="noopener">Subscribe on YouTube</a>
+    </div>
+  </section>
+
+  <section id="takes">
+    <div class="section-head"><h2>Latest Takes</h2><span>Straight from the desk</span></div>
+    <div class="breaking-banner">
+      <span class="btag">Breaking · Today</span>
+      <h3>Roster (Mostly) Set: Hachimura, Beal, Strus & Broome All Locked In</h3>
+      <p>With interim CEO John Gibson now running the front office after Ballmer's suspension, the rebuild quietly finished its shopping list: Rui Hachimura ($28M/2yr), Bradley Beal (2yr/$13.2M via Non-Bird rights), and trade pickups Max Strus and Johni Broome put the Clippers at 16 players on guaranteed deals heading into training camp.</p>
+      <a class="more" href="https://www.youtube.com/@LAClipperIntel" target="_blank" rel="noopener">Full breakdown on YouTube →</a>
+    </div>
+    <div class="takegrid" id="takegrid"></div>
+  </section>
+
+  <section id="reels">
+    <div class="section-head"><h2>Quick Hits</h2><span>Short cuts from the takes above</span></div>
+    <div class="reelrow" id="reelrow"></div>
+  </section>
+
+  <section id="youtube">
+    <div class="section-head"><h2>The Deep Dive</h2><span>Full breakdowns on YouTube</span></div>
+    <div class="yhub">
+      <div class="yplayer"><div class="cp"><span><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div></div>
+      <div class="ylist" id="ylist"></div>
+    </div>
+    <div style="margin-top:16px;">
+      <a class="btn solid" href="https://www.youtube.com/@LAClipperIntel" target="_blank" rel="noopener">Subscribe For Full Breakdowns</a>
+    </div>
+  </section>
+
+  <section id="gm">
+    <div class="section-head"><h2>Run The GM Meter</h2><span>2026 offseason cap sheet</span></div>
+    <div class="gmwrap">
+      <div>
+        <div class="gm-num" id="gmNum">$29.0M</div>
+        <div class="gm-sub">Space remaining after your picks</div>
+        <div class="gm-stats">
+          <div class="gm-tile"><div class="v">10</div><div class="l">Rostered</div></div>
+          <div class="gm-tile"><div class="v">5</div><div class="l">Open Spots</div></div>
+          <div class="gm-tile"><div class="v">$65M</div><div class="l">Below Tax</div></div>
+          <div class="gm-tile"><div class="v">2</div><div class="l">Unprotected 1sts In</div></div>
+        </div>
+      </div>
+      <div>
+        <div class="slider-wrap">
+          <label>Non-Taxpayer MLE <span class="mono">$15.0M</span></label>
+          <input type="range" id="mle" min="0" max="15" value="0" step="0.5">
+        </div>
+        <div class="slider-wrap">
+          <label>Biannual Exception <span class="mono">$5.5M</span></label>
+          <input type="range" id="bae" min="0" max="5.5" value="0" step="0.5">
+        </div>
+        <div class="gm-out" id="gmOut">Spend both exceptions to see what's left for camp deals.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="social">
+    <div class="section-head"><h2>Also Catch Us On</h2><span>Mainly YouTube — but everywhere else too</span></div>
+    <div class="sgrid" id="sgrid"></div>
+  </section>
+
+  <section>
+    <div class="band">
+      <div><h3>Get The Breaking Alerts</h3><p>One ping when a trade or signing actually happens.</p></div>
+      <form class="sub" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Set ✓';">
+        <input type="email" required placeholder="you@email.com" aria-label="Email">
+        <button class="btn solid" type="submit">Notify Me</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span>LA Clipper Intel — independent Clippers fan coverage. Not affiliated with the NBA or LA Clippers.</span>
+    <span>© 2026 LA Clipper Intel</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  try{
+    document.getElementById('menuBtn').addEventListener('click',function(){
+      document.getElementById('mobileMenu').classList.toggle('open');
+    });
+  }catch(e){}
+
+  var takes=[
+    ["Trade Intel","Kawhi To Toronto: What The Full Return Actually Buys","Brandon Ingram, Gradey Dick, two unprotected firsts, a first-round swap, and two seconds — now that the trade's officially done, here's what that package is really worth for a front office in transition.","https://www.youtube.com/@LAClipperIntel"],
+    ["Cap Space","The $29M Plan, Piece By Piece","Ten players locked in, five spots open, both exceptions untouched — the fun-GM case for staying patient into camp instead of chasing a name for the sake of a name.","https://www.youtube.com/@LAClipperIntel"],
+    ["Team History","Chuck The Condor And The Name Nobody Explains","Everyone knows the Clippers logo. Almost nobody knows the sailing-ship name comes straight from San Diego's own maritime history.","https://www.youtube.com/@LAClipperIntel"]
+  ];
+  document.getElementById('takegrid').innerHTML = takes.map(function(t){
+    return '<div class="takecard"><div class="kicker">'+t[0]+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p><a class="more" href="'+t[3]+'" target="_blank" rel="noopener">Watch the full take →</a></div>';
+  }).join('');
+
+  var wire=[
+    ["Now","Roster hits 16 guaranteed deals: Hachimura, Beal, Strus, and Broome all locked in for camp."],
+    ["Today","Bradley Beal re-signed 2yr/$13.2M using Non-Bird rights."],
+    ["Today","Rui Hachimura signs 2yr/$28M in free agency."],
+    ["Yesterday","John S. Gibson named interim Clippers governor & CEO as Ballmer begins suspension."],
+    ["Yesterday","NBA investigation into Kawhi's compensation closes: $30M fine, 5 first-rounders forfeited."],
+    ["2d","Kawhi trade to Toronto officially completed — Ingram, Dick, and five picks headline the return."],
+    ["3d","Bobby Marks recaps the front office's offseason cap plan."]
+  ];
+  document.getElementById('ttrack').innerHTML = wire.map(function(w){return '<span><b>'+w[0]+'</b>'+w[1]+'</span>';}).concat(
+    wire.map(function(w){return '<span><b>'+w[0]+'</b>'+w[1]+'</span>';})
+  ).join('');
+
+  var reels=[
+    ["TikTok","Kawhi to Toronto in 30 seconds","214K"],
+    ["Reels","Chuck the Condor's wild origin story","98K"],
+    ["Shorts","The $29M plan, explained fast","156K"],
+    ["TikTok","Coaching tree hot take","72K"],
+    ["Reels","Ex-Clipper you forgot about","133K"]
+  ];
+  document.getElementById('reelrow').innerHTML = reels.map(function(r){
+    return '<a class="reel" href="https://www.tiktok.com/@laclipperintel" target="_blank" rel="noopener">'+
+      '<span class="plat">'+r[0]+'</span>'+
+      '<span class="rviews">'+r[2]+' views</span>'+
+      '<div class="rplay"><span><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div>'+
+      '<span class="rtitle">'+r[1]+'</span></a>';
+  }).join('');
+
+  var vids=[
+    ["The $29M Plan: Building Around Five Open Spots","Cap Space · 11:04"],
+    ["Kawhi To Toronto: What The Return Really Buys","Trade Breakdown · 9:52"],
+    ["Coaching Tree Watch: Who's Calling Plays","Coaching · 8:15"],
+    ["Franchise Lore: Buffalo to San Diego to LA","Throwback · 10:20"]
+  ];
+  document.getElementById('ylist').innerHTML = vids.map(function(v){
+    return '<a class="yitem" href="https://www.youtube.com/@LAClipperIntel" target="_blank" rel="noopener">'+
+      '<div class="thumb"></div><div><h4>'+v[0]+'</h4><div class="m">'+v[1]+'</div></div></a>';
+  }).join('');
+
+  var socials=[
+    ["YouTube","@LAClipperIntel","https://www.youtube.com/@LAClipperIntel","M22 12s0-3.2-.4-4.7a3 3 0 0 0-2.1-2.1C17.9 4.7 12 4.7 12 4.7s-5.9 0-7.5.5A3 3 0 0 0 2.4 7.3C2 8.8 2 12 2 12s0 3.2.4 4.7a3 3 0 0 0 2.1 2.1c1.6.5 7.5.5 7.5.5s5.9 0 7.5-.5a3 3 0 0 0 2.1-2.1C22 15.2 22 12 22 12zM10 15.5v-7l6 3.5z",true],
+    ["TikTok","@laclipperintel","https://www.tiktok.com/@laclipperintel","M14 3h3a5 5 0 0 0 4 4v3a8 8 0 0 1-4-1.1V15a6 6 0 1 1-6-6c.34 0 .67.03 1 .08V12a3 3 0 1 0 2 2.83z",false],
+    ["Instagram","instagram.com/LAClipperIntel","https://www.instagram.com/LAClipperIntel","M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6a1.1 1.1 0 1 1-1.1 1.1A1.1 1.1 0 0 1 18 6z",false],
+    ["Facebook","facebook.com/LAClipperIntel","https://www.facebook.com/LAClipperIntel","M6 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h8.6v-7H10v-3h2.6V9.5C12.6 7 14 5.6 16.3 5.6c1.1 0 2 .08 2.3.12v2.7h-1.6c-1.2 0-1.4.6-1.4 1.4V11H18.5l-.4 3h-2.9v7H20a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z",false],
+    ["X","@LAClipperIntel","https://x.com/LAClipperIntel","M3 3h5.6l4 5.6L17.4 3H21l-6.9 8.4L21.4 21h-5.6l-4.3-6-5 6H2.6l7.3-8.8z",false],
+    ["Threads","@LAClipperIntel","https://www.threads.net/@LAClipperIntel","M12 2C6.5 2 3 5.8 3 12s3.5 10 9 10c4.4 0 7.6-2.3 8.6-6.1l-2.5-.7c-.7 2.6-2.7 4-6.1 4-3.8 0-6.1-2.5-6.4-6.4.9.5 2.5 1.1 4.6 1.1 3.7 0 6.3-1.7 6.3-4.6 0-2.6-2.1-4.4-5.3-4.4-2.6 0-4.6 1-5.8 2.7l2.1 1.5c.7-1 1.9-1.6 3.4-1.6 1.4 0 2.5.6 2.5 1.7 0 1.2-1.4 1.8-3.5 1.8-1.8 0-3.4-.5-4.4-1.1L6 12.1c0 4.2 2.3 6.6 6.4 6.6",false]
+  ];
+  document.getElementById('sgrid').innerHTML = socials.map(function(s){
+    return '<a class="scard'+(s[4]?' featured':'')+'" href="'+s[2]+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#EDF0F7"><path d="'+s[3]+'"/></svg><div class="n">'+s[0]+'</div><div class="h">'+s[1]+'</div></a>';
+  }).join('');
+
+  function updateGm(){
+    var mle=parseFloat(document.getElementById('mle').value);
+    var bae=parseFloat(document.getElementById('bae').value);
+    var rem=(29-mle-bae).toFixed(1);
+    document.getElementById('gmNum').textContent='$'+rem+'M';
+    document.getElementById('gmOut').textContent='Spent $'+(mle+bae).toFixed(1)+'M of exceptions — $'+rem+'M left for camp deals and buyouts.';
+  }
+  document.getElementById('mle').addEventListener('input',updateGm);
+  document.getElementById('bae').addEventListener('input',updateGm);
+})();
+</script>
+</body>
+</html>
