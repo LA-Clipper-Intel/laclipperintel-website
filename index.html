@@ -210,30 +210,31 @@
   </section>
 
   <section id="gm">
-    <div class="section-head"><h2>Run The GM Meter</h2><span>2026 offseason cap sheet</span></div>
+    <div class="section-head"><h2>Run The GM Meter</h2><span>Post-free-agency cap sheet</span></div>
     <div class="gmwrap">
       <div>
-        <div class="gm-num" id="gmNum">$29.0M</div>
-        <div class="gm-sub">Space remaining after your picks</div>
+        <div class="gm-num" id="gmNum">$6.4M</div>
+        <div class="gm-sub">Exceptions left to work with after camp</div>
         <div class="gm-stats">
-          <div class="gm-tile"><div class="v">10</div><div class="l">Rostered</div></div>
-          <div class="gm-tile"><div class="v">5</div><div class="l">Open Spots</div></div>
-          <div class="gm-tile"><div class="v">$65M</div><div class="l">Below Tax</div></div>
-          <div class="gm-tile"><div class="v">2</div><div class="l">Unprotected 1sts In</div></div>
+          <div class="gm-tile"><div class="v">16</div><div class="l">Guaranteed Deals</div></div>
+          <div class="gm-tile"><div class="v">$4.8M</div><div class="l">Cap Space* If Christie Cut</div></div>
+          <div class="gm-tile"><div class="v">$17M</div><div class="l">Biggest TPE (Collins)</div></div>
+          <div class="gm-tile"><div class="v">3</div><div class="l">Trade Exceptions Open</div></div>
         </div>
       </div>
       <div>
         <div class="slider-wrap">
-          <label>Non-Taxpayer MLE <span class="mono">$15.0M</span></label>
-          <input type="range" id="mle" min="0" max="15" value="0" step="0.5">
+          <label>Remaining MLE <span class="mono">$1.0M avail.</span></label>
+          <input type="range" id="mle" min="0" max="1" value="0" step="0.1">
         </div>
         <div class="slider-wrap">
-          <label>Biannual Exception <span class="mono">$5.5M</span></label>
-          <input type="range" id="bae" min="0" max="5.5" value="0" step="0.5">
+          <label>Biannual Exception <span class="mono">$5.4M avail.</span></label>
+          <input type="range" id="bae" min="0" max="5.4" value="0" step="0.1">
         </div>
-        <div class="gm-out" id="gmOut">Spend both exceptions to see what's left for camp deals.</div>
+        <div class="gm-out" id="gmOut">Spend what's left of the MLE and the BAE to see what's still open for camp/buyout targets.</div>
       </div>
     </div>
+    <p style="color:var(--muted); font-size:.75rem; margin:12px 0 0;">*Opens up only if Cam Christie's non-guaranteed deal doesn't get picked up.</p>
   </section>
 
   <section id="social">
@@ -328,9 +329,9 @@
   function updateGm(){
     var mle=parseFloat(document.getElementById('mle').value);
     var bae=parseFloat(document.getElementById('bae').value);
-    var rem=(29-mle-bae).toFixed(1);
+    var rem=(6.4-mle-bae).toFixed(1);
     document.getElementById('gmNum').textContent='$'+rem+'M';
-    document.getElementById('gmOut').textContent='Spent $'+(mle+bae).toFixed(1)+'M of exceptions — $'+rem+'M left for camp deals and buyouts.';
+    document.getElementById('gmOut').textContent='Spent $'+(mle+bae).toFixed(1)+'M of what\'s left — $'+rem+'M still open for camp/buyout targets.';
   }
   document.getElementById('mle').addEventListener('input',updateGm);
   document.getElementById('bae').addEventListener('input',updateGm);
