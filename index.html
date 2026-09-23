@@ -156,8 +156,7 @@
   input[type=range]{width:100%; accent-color:var(--red); margin-bottom:16px;}
   .gm-out{font-family:'JetBrains Mono'; background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:12px; font-size:.85rem;}
 
-  .sgrid{display:grid; grid-template-columns:repeat(6,1fr); gap:12px;}
-  @media (max-width:900px){.sgrid{grid-template-columns:repeat(3,1fr);}}
+  .sgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; max-width:640px;}
   @media (max-width:480px){.sgrid{grid-template-columns:repeat(2,1fr);}}
   .scard{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center; text-decoration:none; color:var(--text); display:flex; flex-direction:column; align-items:center; gap:6px;}
   .scard:hover{border-color:var(--gold);}
