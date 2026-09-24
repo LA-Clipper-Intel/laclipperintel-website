@@ -112,9 +112,8 @@
   .section-head h2{font-family:'Oswald'; font-size:1.7rem; letter-spacing:.02em; margin:0; text-transform:uppercase;}
   .section-head span{color:var(--muted); font-family:'JetBrains Mono'; font-size:.75rem; text-transform:uppercase;}
 
-  .reelrow{display:grid; grid-template-columns:repeat(5,1fr); gap:12px;}
-  @media (max-width:980px){.reelrow{grid-template-columns:repeat(3,1fr);}}
-  @media (max-width:600px){.reelrow{grid-template-columns:repeat(2,1fr);}}
+  .reelrow{display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,200px)); gap:12px;}
+  .reel img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0;}
   .reel{position:relative; aspect-ratio:9/16; border-radius:14px; overflow:hidden; border:1px solid var(--line); background:linear-gradient(160deg,var(--surface-2),#0a1024); text-decoration:none; color:#fff;}
   .reel::before{content:''; position:absolute; inset:0; background:radial-gradient(circle at 30% 20%, rgba(227,44,64,.35), transparent 55%);}
   .reel .plat{position:absolute; top:8px; left:8px; background:rgba(0,0,0,.55); font-size:.65rem; font-weight:700; padding:4px 8px; border-radius:6px; text-transform:uppercase; letter-spacing:.04em; z-index:2;}
@@ -126,14 +125,10 @@
 
   .yhub{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:22px; display:grid; grid-template-columns:1.2fr 1fr; gap:22px;}
   @media (max-width:860px){.yhub{grid-template-columns:1fr;}}
-  .yplayer{aspect-ratio:16/9; border-radius:12px; background:linear-gradient(150deg,var(--surface-2),#0a1024); position:relative; overflow:hidden; border:1px solid var(--line);}
-  .yplayer::after{content:''; position:absolute; inset:0; background:radial-gradient(circle at 70% 70%, rgba(62,108,201,.35), transparent 55%);}
-  .yplayer .cp{position:absolute; inset:0; display:grid; place-items:center;}
-  .yplayer .cp span{width:64px; height:64px; border-radius:50%; background:rgba(227,44,64,.9); display:grid; place-items:center;}
-  .yplayer .cp svg{width:22px; height:22px; fill:#fff; margin-left:3px;}
+  .yplayer{aspect-ratio:16/9; border-radius:12px; position:relative; overflow:hidden; border:1px solid var(--line);}
   .ylist{display:flex; flex-direction:column; gap:10px;}
   .yitem{display:flex; gap:10px; text-decoration:none; color:var(--text); align-items:center;}
-  .yitem .thumb{width:88px; aspect-ratio:16/9; border-radius:8px; flex:none; background:linear-gradient(140deg,var(--surface-2),#0a1024); border:1px solid var(--line);}
+  .yitem .thumb{width:88px; aspect-ratio:16/9; border-radius:8px; flex:none; object-fit:cover; border:1px solid var(--line);}
   .yitem h4{margin:0 0 4px; font-size:.88rem; font-weight:700; line-height:1.3;}
   .yitem .m{color:var(--muted); font-size:.72rem; font-family:'JetBrains Mono';}
 
@@ -149,9 +144,8 @@
   input[type=range]{width:100%; accent-color:var(--red); margin-bottom:16px;}
   .gm-out{font-family:'JetBrains Mono'; background:var(--surface-2); border:1px solid var(--line); border-radius:10px; padding:12px; font-size:.85rem;}
 
-  .sgrid{display:grid; grid-template-columns:repeat(6,1fr); gap:12px;}
-  @media (max-width:900px){.sgrid{grid-template-columns:repeat(3,1fr);}}
-  @media (max-width:480px){.sgrid{grid-template-columns:repeat(2,1fr);}}
+  .sgrid{display:grid; grid-template-columns:repeat(4,1fr); gap:12px;}
+  @media (max-width:900px){.sgrid{grid-template-columns:repeat(2,1fr);}}
   .scard{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px; text-align:center; text-decoration:none; color:var(--text); display:flex; flex-direction:column; align-items:center; gap:6px;}
   .scard:hover{border-color:var(--gold);}
   .scard.featured{border-color:var(--red); background:var(--surface-2);}
@@ -173,9 +167,6 @@
   .band{background:linear-gradient(120deg,var(--surface),#0a1024); border:1px solid var(--line); border-radius:18px; padding:30px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;}
   .band h3{font-family:'Oswald'; font-size:1.5rem; margin:0 0 4px; letter-spacing:.02em; text-transform:uppercase;}
   .band p{margin:0; color:var(--muted); font-size:.88rem;}
-  form.sub{display:flex; gap:10px; flex-wrap:wrap;}
-  form.sub input{background:var(--surface-2); border:1px solid var(--line); color:var(--text); padding:12px 14px; border-radius:999px; min-width:210px;}
-  form.sub button{border:none; cursor:pointer;}
 
   footer{border-top:1px solid var(--line); padding:26px 0 40px; color:var(--muted); font-size:.82rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
 </style>
@@ -192,7 +183,7 @@
       <a href="#social">Follow</a>
     </nav>
     <div class="appbar-actions">
-      <a class="icon-btn" href="https://www.youtube.com/@LAClipperIntel" target="_blank" rel="noopener" aria-label="YouTube">▶</a>
+      <a class="icon-btn" href="https://www.youtube.com/@LAClipperIntel?sub_confirmation=1" target="_blank" rel="noopener" aria-label="Subscribe to LA Clipper Intel on YouTube">▶</a>
       <button class="icon-btn menu-btn" id="menuBtn" aria-label="Menu">☰</button>
     </div>
   </div>
@@ -225,7 +216,7 @@
     <p>LA Clipper Intel pulls the hottest Clippers takes, trade breakdowns, and throwbacks all into one website — the deep-dive version of the take you saw in a 30-second clip.</p>
     <div class="hero-actions">
       <a class="btn solid" href="#takes">Start Reading</a>
-      <a class="btn line" href="https://www.youtube.com/@LAClipperIntel" target="_blank" rel="noopener">Subscribe on YouTube</a>
+      <a class="btn line" href="https://www.youtube.com/@LAClipperIntel?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
     </div>
   </section>
 
@@ -246,13 +237,15 @@
   </section>
 
   <section id="youtube">
-    <div class="section-head"><h2>The Deep Dive</h2><span>Full breakdowns on YouTube</span></div>
+    <div class="section-head"><h2>On The Channel</h2><span>Brand new — full breakdowns dropping weekly</span></div>
     <div class="yhub">
-      <div class="yplayer"><div class="cp"><span><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div></div>
+      <div class="yplayer">
+        <iframe src="https://www.youtube-nocookie.com/embed/S_giQPNXzBs" title="LA Clipper Intel — Welcome to the Channel" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="width:100%; height:100%; border:0; position:absolute; inset:0;"></iframe>
+      </div>
       <div class="ylist" id="ylist"></div>
     </div>
     <div style="margin-top:16px;">
-      <a class="btn solid" href="https://www.youtube.com/@LAClipperIntel" target="_blank" rel="noopener">Subscribe For Full Breakdowns</a>
+      <a class="btn solid" href="https://www.youtube.com/@LAClipperIntel?sub_confirmation=1" target="_blank" rel="noopener">Subscribe — Be Here From Day One</a>
     </div>
   </section>
 
@@ -281,7 +274,7 @@
         <div class="gm-out" id="gmOut">Spend what's left of the MLE and the BAE to see what's still open for camp/buyout targets.</div>
       </div>
     </div>
-    <p style="color:var(--muted); font-size:.75rem; margin:12px 0 0;">*Opens up only if Cam Christie's non-guaranteed deal doesn't get picked up.</p>
+    <p style="color:var(--muted); font-size:.75rem; margin:12px 0 0;">*Opens up only if Cam Christie's non-guaranteed deal doesn't get picked up. Figures reflect roster moves through Sept 24, 2026.</p>
   </section>
 
   <section id="social">
@@ -291,11 +284,11 @@
 
   <section>
     <div class="band">
-      <div><h3>Get The Breaking Alerts</h3><p>One ping when a trade or signing actually happens.</p></div>
-      <form class="sub" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Set ✓';">
-        <input type="email" required placeholder="you@email.com" aria-label="Email">
-        <button class="btn solid" type="submit">Notify Me</button>
-      </form>
+      <div><h3>Get The Breaking Alerts</h3><p>No email list yet — the fastest way to catch a trade or signing the second it happens.</p></div>
+      <div class="sub" style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn solid" href="https://www.youtube.com/@LAClipperIntel?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
+        <a class="btn line" href="https://x.com/LAClipperIntel" target="_blank" rel="noopener">Follow on X</a>
+      </div>
     </div>
   </section>
 
@@ -337,38 +330,34 @@
   ).join('');
 
   var reels=[
-    ["TikTok","Kawhi to Toronto in 30 seconds","214K"],
-    ["Reels","Chuck the Condor's wild origin story","98K"],
-    ["Shorts","The $29M plan, explained fast","156K"],
-    ["TikTok","Coaching tree hot take","72K"],
-    ["Reels","Ex-Clipper you forgot about","133K"]
+    ["YouTube Shorts","Why Are They Called the Clippers? (Not What You Think)","https://www.youtube.com/shorts/JJdW6fVfucQ","https://i.ytimg.com/vi/JJdW6fVfucQ/maxresdefault.jpg","299 views"],
+    ["YouTube Shorts","How the Clippers Are Rebuilding After the $30M Penalty","https://www.youtube.com/shorts/DQUqxJsVGbs","https://i.ytimg.com/vi/DQUqxJsVGbs/maxresdefault.jpg","200 views"],
+    ["TikTok","New clips every week — follow along","https://www.tiktok.com/@laclipperintel","",""]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
-    return '<a class="reel" href="https://www.tiktok.com/@laclipperintel" target="_blank" rel="noopener">'+
+    return '<a class="reel" href="'+r[2]+'" target="_blank" rel="noopener">'+
+      (r[3] ? '<img src="'+r[3]+'" alt="" loading="lazy">' : '')+
       '<span class="plat">'+r[0]+'</span>'+
-      '<span class="rviews">'+r[2]+' views</span>'+
+      (r[4] ? '<span class="rviews">'+r[4]+'</span>' : '')+
       '<div class="rplay"><span><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div>'+
       '<span class="rtitle">'+r[1]+'</span></a>';
   }).join('');
 
   var vids=[
-    ["The $29M Plan: Building Around Five Open Spots","Cap Space · 11:04"],
-    ["Kawhi To Toronto: What The Return Really Buys","Trade Breakdown · 9:52"],
-    ["Coaching Tree Watch: Who's Calling Plays","Coaching · 8:15"],
-    ["Franchise Lore: Buffalo to San Diego to LA","Throwback · 10:20"]
+    ["LA Clipper Intel — Welcome to the Channel (Trailer)","Channel Trailer · 0:45","https://www.youtube.com/watch?v=S_giQPNXzBs","https://i.ytimg.com/vi/S_giQPNXzBs/maxresdefault.jpg"],
+    ["Why Are They Called the Clippers? (Not What You Think)","Shorts · 0:11","https://www.youtube.com/shorts/JJdW6fVfucQ","https://i.ytimg.com/vi/JJdW6fVfucQ/maxresdefault.jpg"],
+    ["How the Clippers Are Rebuilding After the $30M Penalty","Shorts · 0:11","https://www.youtube.com/shorts/DQUqxJsVGbs","https://i.ytimg.com/vi/DQUqxJsVGbs/maxresdefault.jpg"]
   ];
   document.getElementById('ylist').innerHTML = vids.map(function(v){
-    return '<a class="yitem" href="https://www.youtube.com/@LAClipperIntel" target="_blank" rel="noopener">'+
-      '<div class="thumb"></div><div><h4>'+v[0]+'</h4><div class="m">'+v[1]+'</div></div></a>';
+    return '<a class="yitem" href="'+v[2]+'" target="_blank" rel="noopener">'+
+      '<img class="thumb" src="'+v[3]+'" alt="" loading="lazy"><div><h4>'+v[0]+'</h4><div class="m">'+v[1]+'</div></div></a>';
   }).join('');
 
   var socials=[
     ["YouTube","@LAClipperIntel","https://www.youtube.com/@LAClipperIntel","M22 12s0-3.2-.4-4.7a3 3 0 0 0-2.1-2.1C17.9 4.7 12 4.7 12 4.7s-5.9 0-7.5.5A3 3 0 0 0 2.4 7.3C2 8.8 2 12 2 12s0 3.2.4 4.7a3 3 0 0 0 2.1 2.1c1.6.5 7.5.5 7.5.5s5.9 0 7.5-.5a3 3 0 0 0 2.1-2.1C22 15.2 22 12 22 12zM10 15.5v-7l6 3.5z",true],
     ["TikTok","@laclipperintel","https://www.tiktok.com/@laclipperintel","M14 3h3a5 5 0 0 0 4 4v3a8 8 0 0 1-4-1.1V15a6 6 0 1 1-6-6c.34 0 .67.03 1 .08V12a3 3 0 1 0 2 2.83z",false],
-    ["Instagram","instagram.com/LAClipperIntel","https://www.instagram.com/LAClipperIntel","M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5zM18 6a1.1 1.1 0 1 1-1.1 1.1A1.1 1.1 0 0 1 18 6z",false],
     ["Facebook","facebook.com/LAClipperIntel","https://www.facebook.com/LAClipperIntel","M6 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h8.6v-7H10v-3h2.6V9.5C12.6 7 14 5.6 16.3 5.6c1.1 0 2 .08 2.3.12v2.7h-1.6c-1.2 0-1.4.6-1.4 1.4V11H18.5l-.4 3h-2.9v7H20a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z",false],
-    ["X","@LAClipperIntel","https://x.com/LAClipperIntel","M3 3h5.6l4 5.6L17.4 3H21l-6.9 8.4L21.4 21h-5.6l-4.3-6-5 6H2.6l7.3-8.8z",false],
-    ["Threads","@LAClipperIntel","https://www.threads.net/@LAClipperIntel","M12 2C6.5 2 3 5.8 3 12s3.5 10 9 10c4.4 0 7.6-2.3 8.6-6.1l-2.5-.7c-.7 2.6-2.7 4-6.1 4-3.8 0-6.1-2.5-6.4-6.4.9.5 2.5 1.1 4.6 1.1 3.7 0 6.3-1.7 6.3-4.6 0-2.6-2.1-4.4-5.3-4.4-2.6 0-4.6 1-5.8 2.7l2.1 1.5c.7-1 1.9-1.6 3.4-1.6 1.4 0 2.5.6 2.5 1.7 0 1.2-1.4 1.8-3.5 1.8-1.8 0-3.4-.5-4.4-1.1L6 12.1c0 4.2 2.3 6.6 6.4 6.6",false]
+    ["X","@LAClipperIntel","https://x.com/LAClipperIntel","M3 3h5.6l4 5.6L17.4 3H21l-6.9 8.4L21.4 21h-5.6l-4.3-6-5 6H2.6l7.3-8.8z",false]
   ];
   document.getElementById('sgrid').innerHTML = socials.map(function(s){
     return '<a class="scard'+(s[4]?' featured':'')+'" href="'+s[2]+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="#EDF0F7"><path d="'+s[3]+'"/></svg><div class="n">'+s[0]+'</div><div class="h">'+s[1]+'</div></a>';
