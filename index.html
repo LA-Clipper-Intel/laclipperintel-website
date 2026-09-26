@@ -9,8 +9,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/assets/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/favicon-16.png" sizes="16x16" type="image/png">
 <link rel="icon" href="/assets/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/assets/icon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="manifest" href="/assets/site.webmanifest">
+<meta name="theme-color" content="#0D1730">
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="LA Clipper Intel">
@@ -72,7 +77,7 @@
   .brand img{width:38px; height:38px; border-radius:50%; object-fit:cover; border:1px solid var(--line);}
   .brand .name{font-family:'Oswald'; font-size:1.25rem; letter-spacing:.03em; text-transform:uppercase;}
   .appbar-actions{display:flex; gap:10px; align-items:center;}
-  .icon-btn{width:38px; height:38px; border-radius:50%; background:var(--surface); border:1px solid var(--line); display:grid; place-items:center; cursor:pointer; text-decoration:none; font:inherit; color:var(--text);}
+  .icon-btn{width:44px; height:44px; border-radius:50%; background:var(--surface); border:1px solid var(--line); display:grid; place-items:center; cursor:pointer; text-decoration:none; font:inherit; color:var(--text);}
   .applinks{display:flex; gap:20px; font-size:.85rem; font-weight:700; text-transform:uppercase; letter-spacing:.03em;}
   .applinks a{color:var(--muted); text-decoration:none; padding-block:4px; border-bottom:2px solid transparent;}
   .applinks a:hover{color:var(--text); border-color:var(--red);}
@@ -185,7 +190,7 @@
 
 <header class="appbar">
   <div class="appbar-in">
-    <div class="brand"><img src="assets/logo.jpg" alt="LA Clipper Intel logo"><span class="name">LA Clipper Intel</span></div>
+    <div class="brand"><picture><source srcset="assets/logo.webp" type="image/webp"><img src="assets/logo.jpg" alt="LA Clipper Intel logo" width="38" height="38" loading="eager"></picture><span class="name">LA Clipper Intel</span></div>
     <nav class="applinks">
       <a href="#takes">Takes</a>
       <a href="#youtube">Videos</a>
@@ -215,7 +220,10 @@
 <div class="wrap">
   <section class="hero">
     <div class="hero-banner">
-      <img src="assets/banner.jpg" alt="LA Clipper Intel banner">
+      <picture>
+        <source srcset="assets/banner.webp" type="image/webp">
+        <img src="assets/banner.jpg" alt="LA Clipper Intel banner" width="1024" height="572" fetchpriority="high">
+      </picture>
       <div class="scrim"></div>
       <div class="hero-tag">Trade Intel · Cap Breakdowns · Franchise Throwbacks</div>
     </div>
