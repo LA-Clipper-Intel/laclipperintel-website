@@ -128,6 +128,12 @@
   .reel .rtitle{position:absolute; left:10px; right:10px; bottom:10px; font-size:.8rem; font-weight:700; line-height:1.25; z-index:2;}
   .reel .rviews{position:absolute; left:10px; bottom:38px; font-family:'JetBrains Mono'; font-size:.68rem; color:var(--gold); z-index:2;}
 
+  .reel img,.yplayer img,.yitem .thumb img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover;}
+  .reel::before{z-index:1; background:linear-gradient(to top, rgba(6,10,24,.92), rgba(6,10,24,.05) 60%);}
+  .reel iframe,.yplayer iframe{position:absolute; inset:0; width:100%; height:100%; border:0; z-index:5;}
+  button.reel,button.yplayer{padding:0; font:inherit; cursor:pointer; text-align:left;}
+  .yplayer{width:100%;}
+  .yitem .thumb{position:relative; overflow:hidden;}
   .yhub{background:var(--surface); border:1px solid var(--line); border-radius:18px; padding:22px; display:grid; grid-template-columns:1.2fr 1fr; gap:22px;}
   @media (max-width:860px){.yhub{grid-template-columns:1fr;}}
   .yplayer{display:block; aspect-ratio:16/9; border-radius:12px; background:linear-gradient(150deg,var(--surface-2),#0a1024); position:relative; overflow:hidden; border:1px solid var(--line);}
@@ -249,7 +255,7 @@
   <section id="youtube">
     <div class="section-head"><h2>The Deep Dive</h2><span>Full breakdowns on YouTube</span></div>
     <div class="yhub">
-      <a class="yplayer" href="https://www.youtube.com/@LAClipperIntel/videos" target="_blank" rel="noopener" aria-label="Watch our latest videos on YouTube"><div class="cp"><span><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div></a>
+      <button type="button" class="yplayer" id="yplayer" aria-label="Play our latest video"></button>
       <div class="ylist" id="ylist"></div>
     </div>
     <div style="margin-top:16px;">
@@ -315,12 +321,12 @@
   }catch(e){}
 
   var takes=[
-    ["Trade Intel","Kawhi To Toronto: What The Full Return Actually Buys","Brandon Ingram, Gradey Dick, two unprotected firsts, a first-round swap, and two seconds — now that the trade's officially done, here's what that package is really worth for a front office in transition.","https://www.youtube.com/@LAClipperIntel"],
-    ["Cap Space","The $29M Plan, Piece By Piece","Ten players locked in, five spots open, both exceptions untouched — the fun-GM case for staying patient into camp instead of chasing a name for the sake of a name.","https://www.youtube.com/@LAClipperIntel"],
-    ["Team History","Chuck The Condor And The Name Nobody Explains","Everyone knows the Clippers logo. Almost nobody knows the sailing-ship name comes straight from San Diego's own maritime history.","https://www.youtube.com/@LAClipperIntel"]
+    ["Trade Intel","Grading the Kawhi Trade, Now That We Know Everything","Brandon Ingram, Gradey Dick, two unprotected firsts, a first-round swap, and two seconds: now that the deal is done, here's my final grade on what that package is really worth for a front office in transition.","https://www.youtube.com/watch?v=5ZCYlMXCKSA"],
+    ["Roster Puzzle","Too Many Mouths To Feed: The Clippers' Crowded Backcourt","A camp roster that's suddenly heavy on guards. Here's the backcourt logjam, explained the fun-GM way.","https://www.youtube.com/watch?v=z12V9E-g8TE"],
+    ["Team History","The Real Story Behind Chuck the Condor","A quick franchise-history Short on the mascot everybody knows and the story almost nobody does.","https://www.youtube.com/watch?v=wIRGAZchaG4"]
   ];
   document.getElementById('takegrid').innerHTML = takes.map(function(t){
-    return '<div class="takecard"><div class="kicker">'+t[0]+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p><a class="more" href="'+t[3]+'" target="_blank" rel="noopener">Watch the full take →</a></div>';
+    return '<div class="takecard"><div class="kicker">'+t[0]+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p><a class="more" href="'+t[3]+'" target="_blank" rel="noopener">Watch on YouTube →</a></div>';
   }).join('');
 
   var wire=[
@@ -336,28 +342,50 @@
     wire.map(function(w){return '<span><b>'+w[0]+'</b>'+w[1]+'</span>';})
   ).join('');
 
+  var PLAY='<svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg>';
+  function esc(t){return String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/"/g,'&quot;');}
+  function embed(el,id){
+    var f=document.createElement('iframe');
+    f.src='https://www.youtube-nocookie.com/embed/'+id+'?autoplay=1&rel=0&playsinline=1';
+    f.title=el.getAttribute('data-title')||'LA Clipper Intel video';
+    f.allow='autoplay; encrypted-media; picture-in-picture; fullscreen';
+    f.allowFullscreen=true; f.loading='lazy';
+    el.innerHTML=''; el.appendChild(f); el.removeAttribute('type');
+  }
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-yt]');
+    if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
+  });
+
+  // Real channel videos (verified via vidIQ 2026-09-29)
   var reels=[
-    ["TikTok","New Clippers Shorts every week — @laclipperintel","https://www.tiktok.com/@laclipperintel"],
-    ["YouTube Shorts","Quick takes, posted alongside every video","https://www.youtube.com/@LAClipperIntel/shorts"],
-    ["TikTok","Trade & cap breakdowns in under 60 seconds","https://www.tiktok.com/@laclipperintel"],
-    ["YouTube Shorts","Follow for the fast version of every take","https://www.youtube.com/@LAClipperIntel/shorts"]
+    ["v5yKYHeXMt4","Brandon Ingram's Achilles Surgery: What It Means"],
+    ["wB0r7CM9zWo","Ty Lue Calls This The Deepest Clippers Team Ever"],
+    ["bNubMD9bMEc","Ballmer Did a Complete 180"],
+    ["ptDwv1PtaR4","My Final Grade On The Kawhi Trade"],
+    ["RXSidz_zNeU","The Clippers' Cap Sheet Is Loaded: Here's The Math"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
-    return '<a class="reel" href="'+r[2]+'" target="_blank" rel="noopener">'+
-      '<span class="plat">'+r[0]+'</span>'+
-      '<div class="rplay"><span><svg viewBox="0 0 24 24"><path d="M6 4l14 8-14 8z"/></svg></span></div>'+
-      '<span class="rtitle">'+r[1]+'</span></a>';
+    return '<button type="button" class="reel" data-yt="'+r[0]+'" data-title="'+esc(r[1])+'" aria-label="Play: '+esc(r[1])+'">'+
+      '<img src="https://i.ytimg.com/vi/'+r[0]+'/hqdefault.jpg" alt="" loading="lazy" width="480" height="360">'+
+      '<span class="plat">YouTube Short</span>'+
+      '<div class="rplay"><span>'+PLAY+'</span></div>'+
+      '<span class="rtitle">'+esc(r[1])+'</span></button>';
   }).join('');
 
   var vids=[
-    ["Cap Space Explainers","Full breakdowns of every exception & TPE"],
-    ["Trade Breakdowns","What every rumored and completed deal buys"],
-    ["Coaching Tree Watch","Who's actually calling plays this season"],
-    ["Franchise Lore","Buffalo to San Diego to LA — the deep cuts"]
+    ["u6h2tp4ORIU","Brandon Ingram's Achilles Just Tore: What It Actually Costs The Clippers","9:41"],
+    ["VBlbdwCnUE0","Clippers Media Day Under TWO Suspensions: Who's Really Running This Team","9:23"],
+    ["5ZCYlMXCKSA","Grading the Kawhi Trade, Now That We Know Everything","9:54"],
+    ["z12V9E-g8TE","Too Many Mouths To Feed: The Clippers' Crowded Backcourt Puzzle","3:10"]
   ];
-  document.getElementById('ylist').innerHTML = vids.map(function(v){
-    return '<a class="yitem" href="https://www.youtube.com/@LAClipperIntel" target="_blank" rel="noopener">'+
-      '<div class="thumb"></div><div><h4>'+v[0]+'</h4><div class="m">'+v[1]+'</div></div></a>';
+  var yp=document.getElementById('yplayer');
+  yp.setAttribute('data-yt',vids[0][0]); yp.setAttribute('data-title',vids[0][1]);
+  yp.setAttribute('aria-label','Play: '+vids[0][1]);
+  yp.innerHTML='<img src="https://i.ytimg.com/vi/'+vids[0][0]+'/hqdefault.jpg" alt="'+esc(vids[0][1])+'" loading="lazy" width="480" height="360"><div class="cp"><span>'+PLAY+'</span></div>';
+  document.getElementById('ylist').innerHTML = vids.slice(1).map(function(v){
+    return '<a class="yitem" href="https://www.youtube.com/watch?v='+v[0]+'" target="_blank" rel="noopener">'+
+      '<div class="thumb"><img src="https://i.ytimg.com/vi/'+v[0]+'/mqdefault.jpg" alt="" loading="lazy" width="320" height="180"></div><div><h4>'+esc(v[1])+'</h4><div class="m">'+v[2]+' · Watch on YouTube</div></div></a>';
   }).join('');
 
   var socials=[
