@@ -97,6 +97,14 @@
   .ttrack b{color:var(--gold); margin-right:8px; font-family:'JetBrains Mono';}
   @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
+  .gamebar{background:var(--surface); border-bottom:1px solid var(--line); margin:0 -16px;}
+  .gamebar-in{max-width:1180px; margin:0 auto; padding:10px 16px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:6px 18px; font-size:.82rem;}
+  .gamebar .now{font-family:'JetBrains Mono'; color:var(--muted);}
+  .gamebar .cd{display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+  .gamebar .cd-label{font-weight:700; text-transform:uppercase; letter-spacing:.05em; font-size:.72rem; color:var(--gold);}
+  .gamebar .cd-time{font-family:'JetBrains Mono'; font-weight:700; font-size:1rem; color:#fff;}
+  .gamebar .cd-sub{color:var(--muted); font-size:.74rem;}
+
   .hero{padding:26px 0 10px;}
   .hero-banner{position:relative; border-radius:16px; overflow:hidden; border:1px solid var(--line); aspect-ratio:1024/572; margin-bottom:22px;}
   .hero-banner img{width:100%; height:100%; object-fit:cover;}
@@ -219,6 +227,17 @@
   <div class="ticker-in">
     <div class="ttag"><span class="dot"></span>Live</div>
     <div class="ttrack" id="ttrack"></div>
+  </div>
+</div>
+
+<div class="gamebar">
+  <div class="gamebar-in">
+    <div class="now" id="nowPT">&nbsp;</div>
+    <div class="cd">
+      <span class="cd-label">Season opener · Kings at Intuit Dome</span>
+      <span class="cd-time" id="cdTime">Oct 21, 7:30 PM PT</span>
+      <span class="cd-sub">Preseason: Oct 4 vs Warriors, Honolulu</span>
+    </div>
   </div>
 </div>
 
@@ -409,6 +428,21 @@
   document.getElementById('mle').addEventListener('input',updateGm);
   document.getElementById('bae').addEventListener('input',updateGm);
 })();
+
+  // Live Pacific time + countdown to the 2026-27 opener (Kings, Oct 21, 7:30 PM PT = 02:30 UTC Oct 22)
+  (function(){
+    var OPEN=Date.UTC(2026,9,22,2,30,0), nowEl=document.getElementById('nowPT'), cd=document.getElementById('cdTime');
+    var fmt; try{fmt=new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});}catch(e){}
+    function tick(){
+      var n=Date.now();
+      if(fmt) nowEl.textContent=fmt.format(new Date(n));
+      var d=OPEN-n;
+      if(d<=0){cd.textContent='Season is underway';return;}
+      var days=Math.floor(d/864e5), h=Math.floor(d%864e5/36e5), m=Math.floor(d%36e5/6e4), sec=Math.floor(d%6e4/1e3);
+      cd.textContent=days+'d '+('0'+h).slice(-2)+'h '+('0'+m).slice(-2)+'m '+('0'+sec).slice(-2)+'s';
+    }
+    tick(); setInterval(tick,1000);
+  })();
 </script>
 </body>
 </html>
