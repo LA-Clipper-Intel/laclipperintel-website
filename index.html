@@ -203,6 +203,12 @@
   .band{background:linear-gradient(120deg,var(--surface),#0a1024); border:1px solid var(--line); border-radius:18px; padding:30px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;}
   .band h3{font-family:'Oswald'; font-size:1.5rem; margin:0 0 4px; letter-spacing:.02em; text-transform:uppercase;}
   .band p{margin:0; color:var(--muted); font-size:.88rem;}
+  .alert-form{display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; max-width:460px;}
+  .alert-form input[type=email]{flex:1 1 220px; min-height:44px; box-sizing:border-box; padding:10px 16px; border-radius:999px; border:1px solid var(--line); background:var(--ink); color:var(--text); font:inherit; font-size:.9rem;}
+  .alert-form input[type=email]:focus{outline:2px solid var(--gold); outline-offset:2px;}
+  .alert-form button{border:0; cursor:pointer; font-family:inherit;}
+  .alert-note{margin-top:8px !important; font-size:.75rem !important;}
+  .alert-note a{color:var(--gold);}
   form.sub{display:flex; gap:10px; flex-wrap:wrap;}
   form.sub input{background:var(--surface-2); border:1px solid var(--line); color:var(--text); padding:12px 14px; border-radius:999px; min-width:210px;}
   form.sub button{border:none; cursor:pointer;}
@@ -329,7 +335,14 @@
 
   <section>
     <div class="band">
-      <div><h3>Get The Breaking Alerts</h3><p>No email list yet — the fastest way to get pinged the second a trade or signing happens is following us where we post first.</p></div>
+      <div><h3>Get The Breaking Alerts</h3><p>Trades, signings and injury news, emailed the second it breaks. No spam, unsubscribe anytime.</p>
+        <form class="alert-form" action="https://buttondown.com/api/emails/embed-subscribe/laclipperintel" method="post" target="_blank">
+          <label for="bd-email" style="position:absolute; left:-9999px;">Email address</label>
+          <input type="email" name="email" id="bd-email" placeholder="you@email.com" autocomplete="email" required>
+          <button class="btn solid" type="submit">Email Me Alerts</button>
+        </form>
+        <p class="alert-note">We only use your email for Clippers alerts. Powered by <a href="https://buttondown.com/refer/laclipperintel" target="_blank" rel="noopener">Buttondown</a>.</p>
+      </div>
       <div class="sub" style="display:flex; gap:12px; flex-wrap:wrap;">
         <a class="btn solid" href="https://www.youtube.com/@LAClipperIntel?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
         <a class="btn line" href="https://x.com/LAClipperIntel" target="_blank" rel="noopener">Follow on X</a>
