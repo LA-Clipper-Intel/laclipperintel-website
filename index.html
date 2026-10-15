@@ -214,6 +214,18 @@
   form.sub button{border:none; cursor:pointer;}
 
   footer{border-top:1px solid var(--line); padding:26px 0 40px; color:var(--muted); font-size:.82rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  .gc{display:grid; grid-template-columns:1fr 1fr; gap:18px;}
+  @media(max-width:760px){.gc{grid-template-columns:1fr;}}
+  .gc .card{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:20px;}
+  .gc .kicker{font-family:'JetBrains Mono'; font-size:.68rem; text-transform:uppercase; letter-spacing:.06em; color:var(--gold); margin-bottom:8px;}
+  .gc .score{font-family:'Oswald'; font-size:1.9rem; margin:0 0 4px;}
+  .gc .meta{color:var(--muted); font-size:.85rem; line-height:1.6; margin:0 0 10px;}
+  .gc table{width:100%; border-collapse:collapse; font-size:.85rem; margin-top:8px;}
+  .gc th,.gc td{text-align:left; padding:8px 6px; border-bottom:1px solid var(--line);}
+  .gc th{color:var(--muted); font-weight:600; font-size:.72rem; text-transform:uppercase;}
+  .gc select{width:100%; min-height:44px; background:var(--surface-2); color:var(--text); border:1px solid var(--line); border-radius:8px; padding:0 12px; font:inherit; margin:6px 0 12px;}
+  .gc .src{color:var(--muted); font-size:.72rem; margin-top:10px;}
+  .gc .src a{color:var(--gold);}
 </style>
 </head>
 <body>
@@ -222,6 +234,7 @@
   <div class="appbar-in">
     <div class="brand"><picture><source srcset="assets/logo.webp" type="image/webp"><img src="assets/logo.jpg" alt="LA Clipper Intel logo"></picture><span class="name">LA Clipper Intel</span></div>
     <nav class="applinks">
+      <a href="#games">Games</a>
       <a href="#takes">Takes</a>
       <a href="#youtube">Videos</a>
       <a href="/cap-sheet/">Cap Sheet</a>
@@ -276,6 +289,25 @@
     <div class="hero-actions">
       <a class="btn solid" href="#takes">Start Reading</a>
       <a class="btn line" href="https://www.youtube.com/@LAClipperIntel?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
+    </div>
+  </section>
+
+  <section id="games">
+    <div class="section-head"><h2>Game Center</h2><span>Last game stats · Next up</span></div>
+    <div class="gc">
+      <div class="card">
+        <div class="kicker">Previous games</div>
+        <label for="gsel" class="meta">Pick a game</label>
+        <select id="gsel"></select>
+        <div id="gview"></div>
+      </div>
+      <div class="card">
+        <div class="kicker">Next game</div>
+        <p class="score" id="nxTeam">Sacramento Kings</p>
+        <p class="meta" id="nxMeta">Wed, Oct 21 · 7:30 PM PT · Intuit Dome, Inglewood<br>2026-27 season opener</p>
+        <p class="meta" id="nxCd"></p>
+        <a class="more" href="/schedule/" style="color:var(--gold)">Full schedule →</a>
+      </div>
     </div>
   </section>
 
@@ -483,6 +515,32 @@
       cd.textContent=days+'d '+('0'+h).slice(-2)+'h '+('0'+m).slice(-2)+'m '+('0'+sec).slice(-2)+'s';
     }
     tick(); setInterval(tick,1000);
+  })();
+
+  // Game Center. Add games to the top of this list ONLY after verifying on clippers.com / NBA.com plus a reputable outlet.
+  (function(){
+    var games=[
+      {id:"2026-10-14",label:"Oct 14 · vs Denver Nuggets (preseason)",pending:true,line:"Intuit Dome",note:"Final score and box score pending verification against clippers.com / NBA.com."},
+      {id:"2026-10-10",label:"Oct 10 · at Toronto Raptors (preseason)",pending:true,line:"Rogers Arena, Vancouver",note:"Result not yet confirmed by an official source."},
+      {id:"2026-10-04",label:"Oct 4 · vs Golden State Warriors (preseason)",score:"Clippers 104, Warriors 101",line:"Stan Sheriff Center, Honolulu",
+        players:[["Rui Hachimura","21 pts, 8-of-11 FG, 15 min"]],
+        note:"Max Strus suffered a partial plantar fascia tear in his right foot (reevaluated in four weeks, per Shams Charania).",
+        src:"https://www.nba.com/clippers/schedule"}
+    ];
+    var sel=document.getElementById('gsel'), view=document.getElementById('gview');
+    sel.innerHTML=games.map(function(g,i){return '<option value="'+i+'">'+esc(g.label)+'</option>';}).join('');
+    function show(i){
+      var g=games[i], h='<p class="score">'+esc(g.pending?'Result pending':g.score)+'</p><p class="meta">'+esc(g.line)+'</p>';
+      if(g.players){h+='<table><thead><tr><th>Player</th><th>Line</th></tr></thead><tbody>'+g.players.map(function(p){return '<tr><td>'+esc(p[0])+'</td><td>'+esc(p[1])+'</td></tr>';}).join('')+'</tbody></table>';}
+      h+='<p class="meta">'+esc(g.note)+'</p>';
+      if(g.src)h+='<p class="src">Verify: <a href="'+g.src+'" target="_blank" rel="noopener">Clippers schedule on NBA.com</a></p>';
+      view.innerHTML=h;
+    }
+    sel.addEventListener('change',function(){show(sel.value);});
+    show(0);
+    var nx=Date.UTC(2026,9,22,2,30,0), el=document.getElementById('nxCd');
+    function t(){var d=nx-Date.now(); el.textContent=d>0?'Tip-off in '+Math.floor(d/864e5)+' days, '+Math.floor(d%864e5/36e5)+' hours':'Game time';}
+    t(); setInterval(t,60000);
   })();
 </script>
 </body>
