@@ -214,6 +214,20 @@
   form.sub button{border:none; cursor:pointer;}
 
   footer{border-top:1px solid var(--line); padding:26px 0 40px; color:var(--muted); font-size:.82rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;}
+  .gamebar a.cd-sub{text-decoration:none;} .gamebar a.cd-sub:hover{color:var(--gold);}
+  .scoreboard{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  @media (max-width:760px){.scoreboard{grid-template-columns:1fr;}}
+  .sb-col{background:var(--surface); border:1px solid var(--line); border-radius:14px; padding:16px 18px; display:flex; flex-direction:column; gap:8px;}
+  .sb-col h3{font-family:'Oswald'; text-transform:uppercase; letter-spacing:.03em; font-size:1.05rem; margin:0 0 4px;}
+  .sb-game{display:grid; grid-template-columns:auto 1fr auto auto; align-items:center; gap:12px; padding:10px 12px; min-height:44px; border:1px solid var(--line); border-radius:10px; background:var(--surface-2); text-decoration:none;}
+  .sb-game:hover{border-color:var(--gold);}
+  .sb-r{font-family:'JetBrains Mono',monospace; font-weight:700; font-size:.75rem; padding:4px 8px; border-radius:4px; text-align:center; min-width:34px;}
+  .sb-r.w{background:rgba(46,160,90,.18); color:#7fe0a6;} .sb-r.l{background:rgba(227,44,64,.15); color:#ff8c98;} .sb-r.up{background:var(--ink); color:var(--gold);}
+  .sb-opp{font-weight:700; font-size:.92rem;} .sb-opp small{display:block; color:var(--muted); font-weight:500; font-size:.74rem;}
+  .sb-s{font-family:'JetBrains Mono',monospace; font-weight:700; font-variant-numeric:tabular-nums;}
+  .sb-go{color:var(--gold); font-size:.74rem; font-weight:700; text-align:right;}
+  .sb-col .more{margin-top:auto; color:var(--gold); font-weight:700; font-size:.85rem; text-decoration:none; min-height:44px; display:flex; align-items:center;}
+  .sb-empty{color:var(--muted); font-size:.88rem; margin:0;}
 </style>
 </head>
 <body>
@@ -224,6 +238,7 @@
     <nav class="applinks">
       <a href="#takes">Takes</a>
       <a href="#youtube">Videos</a>
+      <a href="/games/">Scores</a>
       <a href="/cap-sheet/">Cap Sheet</a>
       <a href="/roster/">Roster</a>
       <a href="/injuries/">Injuries</a>
@@ -237,6 +252,7 @@
   <div id="mobileMenu">
     <a href="#takes">Takes</a>
     <a href="#youtube">Videos</a>
+    <a href="/games/">Scores</a>
     <a href="/cap-sheet/">Cap Sheet</a>
     <a href="/roster/">Roster</a>
     <a href="/injuries/">Injuries</a>
@@ -255,12 +271,13 @@
 
 <div class="gamebar">
   <div class="gamebar-in">
+<!-- GAMES:GAMEBAR:START -->
     <div class="now" id="nowPT">&nbsp;</div>
     <div class="cd">
-      <span class="cd-label">Season opener · Kings at Intuit Dome</span>
-      <span class="cd-time" id="cdTime">Oct 21, 7:30 PM PT</span>
-      <span class="cd-sub">Preseason finale: Clippers 122, Nuggets 110 (Intuit Dome, Oct 14)</span>
+    <span class="cd-label">Next · Fri, Oct 23, @ Lakers · 7:00 PM PT</span><span class="cd-time" id="cdTime" data-tip="2026-10-23T19:00:00-07:00">Fri, Oct 23</span>
+    <a class="cd-sub" href="/games/2026-10-21-kings/">Last: W 121-96 vs Kings (1-0) · Box score →</a>
     </div>
+<!-- GAMES:GAMEBAR:END -->
   </div>
 </div>
 
@@ -278,6 +295,16 @@
       <a class="btn line" href="https://www.youtube.com/@LAClipperIntel?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
     </div>
   </section>
+
+<!-- GAMES:HOME:START -->
+  <section id="scores">
+    <div class="section-head"><h2>Scores &amp; Schedule</h2><span>1-0 · Box scores for both teams</span></div>
+    <div class="scoreboard">
+      <div class="sb-col"><h3>Recent Results</h3><a class="sb-game" href="/games/2026-10-21-kings/"><span class="sb-r w">W</span><span class="sb-opp">vs Kings<small>Wed, Oct 21</small></span><span class="sb-s">121-96</span><span class="sb-go">Box score →</span></a><a class="more" href="/games/">All scores &amp; box scores →</a></div>
+      <div class="sb-col"><h3>Upcoming</h3><a class="sb-game" href="/schedule/"><span class="sb-r up">Oct 23</span><span class="sb-opp">@ Lakers<small>Fri · 7:00 PM PT</small></span><span class="sb-go">Crosstown rivalry</span></a><a class="sb-game" href="/schedule/"><span class="sb-r up">Oct 25</span><span class="sb-opp">@ Thunder<small>Sun · 4:00 PM PT</small></span><span class="sb-go"></span></a><a class="sb-game" href="/schedule/"><span class="sb-r up">Oct 28</span><span class="sb-opp">vs Lakers<small>Wed · 7:30 PM PT</small></span><span class="sb-go">Crosstown rivalry</span></a><a class="sb-game" href="/schedule/"><span class="sb-r up">Oct 30</span><span class="sb-opp">@ Timberwolves<small>Fri · 5:00 PM PT</small></span><span class="sb-go">NBA Cup</span></a><a class="more" href="/schedule/">Full schedule →</a></div>
+    </div>
+  </section>
+<!-- GAMES:HOME:END -->
 
   <section id="takes">
     <div class="section-head"><h2>Latest Takes</h2><span>Straight from the desk</span></div>
@@ -470,17 +497,19 @@
   document.getElementById('bae').addEventListener('input',updateGm);
 })();
 
-  // Live Pacific time + countdown to the 2026-27 opener (Kings, Oct 21, 7:30 PM PT = 02:30 UTC Oct 22)
+  // Live Pacific time + countdown to the next tip (data-tip is written by the game-data generator)
   (function(){
-    var OPEN=Date.UTC(2026,9,22,2,30,0), nowEl=document.getElementById('nowPT'), cd=document.getElementById('cdTime');
+    var nowEl=document.getElementById('nowPT'), cd=document.getElementById('cdTime');
+    var TIP=cd?Date.parse(cd.getAttribute('data-tip')):NaN;
     var fmt; try{fmt=new Intl.DateTimeFormat('en-US',{timeZone:'America/Los_Angeles',weekday:'short',month:'short',day:'numeric',year:'numeric',hour:'numeric',minute:'2-digit',timeZoneName:'short'});}catch(e){}
     function tick(){
       var n=Date.now();
-      if(fmt) nowEl.textContent=fmt.format(new Date(n));
-      var d=OPEN-n;
-      if(d<=0){cd.textContent='Season is underway';return;}
+      if(fmt && nowEl) nowEl.textContent=fmt.format(new Date(n));
+      if(!cd || isNaN(TIP)) return;
+      var d=TIP-n;
+      if(d<=0){cd.textContent=d>-3*36e5?'Game on now':'Final soon';return;}
       var days=Math.floor(d/864e5), h=Math.floor(d%864e5/36e5), m=Math.floor(d%36e5/6e4), sec=Math.floor(d%6e4/1e3);
-      cd.textContent=days+'d '+('0'+h).slice(-2)+'h '+('0'+m).slice(-2)+'m '+('0'+sec).slice(-2)+'s';
+      cd.textContent=(days?days+'d ':'')+('0'+h).slice(-2)+'h '+('0'+m).slice(-2)+'m '+('0'+sec).slice(-2)+'s';
     }
     tick(); setInterval(tick,1000);
   })();

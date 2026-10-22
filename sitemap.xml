@@ -36,4 +36,18 @@
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
+<!-- GAMES:SITEMAP:START -->
+  <url>
+    <loc>https://laclipperintel.com/games/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://laclipperintel.com/games/2026-10-21-kings/</loc>
+    <lastmod>2026-10-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+<!-- GAMES:SITEMAP:END -->
 </urlset>
