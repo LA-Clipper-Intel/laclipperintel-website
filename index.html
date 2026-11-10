@@ -56,13 +56,13 @@
     },
     {
       "@type": "VideoObject",
-      "name": "Brandon Ingram's Achilles Just Tore: What It Actually Costs The Clippers",
-      "description": "LA Clipper Intel breaks down what Brandon Ingram's partially torn Achilles means for the Clippers.",
-      "thumbnailUrl": "https://i.ytimg.com/vi/u6h2tp4ORIU/hqdefault.jpg",
-      "uploadDate": "2026-09-28T13:20:37-07:00",
-      "duration": "PT9M41S",
-      "embedUrl": "https://www.youtube-nocookie.com/embed/u6h2tp4ORIU",
-      "contentUrl": "https://www.youtube.com/watch?v=u6h2tp4ORIU",
+      "name": "Clippers Snap the 7-Game Skid: Real Turnaround or One-Night Blip? Turnovers, Bench & Next 4 Games",
+      "description": "LA Clipper Intel breaks down the Clippers' 139-123 win over the Pelicans: turnovers, the bench and whether the skid is really over.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/EWCujksHGHM/hqdefault.jpg",
+      "uploadDate": "2026-11-09T12:55:51-08:00",
+      "duration": "PT11M5S",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/EWCujksHGHM",
+      "contentUrl": "https://www.youtube.com/watch?v=EWCujksHGHM",
       "publisher": { "@id": "https://laclipperintel.com/#organization" }
     }
   ]
@@ -409,9 +409,9 @@
   }catch(e){}
 
   var takes=[
-    ["Trade Intel","Grading the Kawhi Trade, Now That We Know Everything","Brandon Ingram, Gradey Dick, two unprotected firsts, a first-round swap, and two seconds: now that the deal is done, here's my final grade on what that package is really worth for a front office in transition.","https://www.youtube.com/watch?v=5ZCYlMXCKSA"],
-    ["Roster Puzzle","Too Many Mouths To Feed: The Clippers' Crowded Backcourt","A camp roster that's suddenly heavy on guards. Here's the backcourt logjam, explained the fun-GM way.","https://www.youtube.com/watch?v=z12V9E-g8TE"],
-    ["Team History","The Real Story Behind Chuck the Condor","A quick franchise-history Short on the mascot everybody knows and the story almost nobody does.","https://www.youtube.com/watch?v=wIRGAZchaG4"]
+    ["Game Breakdown","Clippers Snap the 7-Game Skid: Real Turnaround or One-Night Blip?","The 139-123 win over the Pelicans ended the losing streak. Turnovers, the bench and the next four games decide whether this is a turn or a blip, and I've got a verdict.","https://www.youtube.com/watch?v=EWCujksHGHM"],
+    ["Deep Dive","It's NOT the Threes: What's Really Behind the Slow Start","Possessions, the paint and the lineups. Forget the shooting slump narrative, here's where the games are actually being lost.","https://www.youtube.com/watch?v=vlf0KxkEwLQ"],
+    ["Front Office","Where the Kawhi Penalty Stands Now","$30M paid, five first-round picks gone, and the Raptors in town Nov 2. The full ledger of what this franchise is still paying for, explained the fun-GM way.","https://www.youtube.com/watch?v=Jni7ZXMt2RM"]
   ];
   document.getElementById('takegrid').innerHTML = takes.map(function(t){
     return '<div class="takecard"><div class="kicker">'+t[0]+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p><a class="more" href="'+t[3]+'" target="_blank" rel="noopener">Watch on YouTube →</a></div>';
@@ -445,13 +445,13 @@
     if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
   });
 
-  // Real channel videos (verified via vidIQ 2026-09-29)
+  // Real channel videos (verified via vidIQ 2026-11-10)
   var reels=[
-    ["v5yKYHeXMt4","Brandon Ingram's Achilles Surgery: What It Means"],
-    ["wB0r7CM9zWo","Ty Lue Calls This The Deepest Clippers Team Ever"],
-    ["bNubMD9bMEc","Ballmer Did a Complete 180"],
-    ["ptDwv1PtaR4","My Final Grade On The Kawhi Trade"],
-    ["RXSidz_zNeU","The Clippers' Cap Sheet Is Loaded: Here's The Math"]
+    ["nv3Koup8upU","Clippers 139, Pelicans 123: 34 Assists, 16 Threes"],
+    ["z9IYw0_yIQc","Clippers Snap the Skid: Turning Point or Blip?"],
+    ["lZYPWcckM_A","Clippers 116, Heat 117: Blew a 20-Point Lead"],
+    ["LNi7zBgus30","DeAndre Jordan's Wild Journey: Lob City to Ring No. 1"],
+    ["TElIuYVLvAE","Terance Mann: Quiet Leadership Off the Court"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
     return '<button type="button" class="reel" data-yt="'+r[0]+'" data-title="'+esc(r[1])+'" aria-label="Play: '+esc(r[1])+'">'+
@@ -462,10 +462,10 @@
   }).join('');
 
   var vids=[
-    ["u6h2tp4ORIU","Brandon Ingram's Achilles Just Tore: What It Actually Costs The Clippers","9:41"],
-    ["VBlbdwCnUE0","Clippers Media Day Under TWO Suspensions: Who's Really Running This Team","9:23"],
-    ["5ZCYlMXCKSA","Grading the Kawhi Trade, Now That We Know Everything","9:54"],
-    ["z12V9E-g8TE","Too Many Mouths To Feed: The Clippers' Crowded Backcourt Puzzle","3:10"]
+    ["EWCujksHGHM","Clippers Snap the 7-Game Skid: Real Turnaround or One-Night Blip?","11:05"],
+    ["vlf0KxkEwLQ","Clippers Deep Dive: It's NOT the Threes: Possessions, the Paint & Lineups Behind the 1-5 Start","11:56"],
+    ["_oBZ8kKkvnw","Clippers 1-5: Week in Review & Outlook: The Second-Quarter Problem","14:00"],
+    ["7pHT1eijCs8","How to Watch the Clippers in 2026-27: ClipperVision, KTLA & the New Broadcast Team","11:57"]
   ];
   var yp=document.getElementById('yplayer');
   yp.setAttribute('data-yt',vids[0][0]); yp.setAttribute('data-title',vids[0][1]);
