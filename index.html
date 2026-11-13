@@ -445,13 +445,13 @@
     if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
   });
 
-  // Real channel videos (verified via vidIQ 2026-11-10)
+  // Real channel videos (verified via vidIQ 2026-11-13)
   var reels=[
-    ["QzfPv54Hel4","Suns 133, Clippers 110: Over by Halftime in Phoenix"],
-    ["6fpl2QOgmhU","Fun GM: Are the Clippers Already Sellers?"],
-    ["ESzHx8wjdGU","Clippers' Turnover Fix: 11, a Season Low"],
-    ["gL4V44SHt-8","Jamal Crawford's Clippers Legacy | Ex-Clippers Watch"],
-    ["nv3Koup8upU","Clippers 139, Pelicans 123: 34 Assists, 16 Threes"]
+    ["m4OXE5-oOVs","Fun GM: Who Should the Clippers Actually Trade?"],
+    ["Tqb9VJhwu6g","The Wildest Ownership Change in Clippers History"],
+    ["I04hRjbFTPk","Chauncey Billups: When Mr. Big Shot Joined Our Bench"],
+    ["Q1Fhpx9K61k","Ex-Clippers Watch: Patrick Beverley's Journey"],
+    ["QzfPv54Hel4","Suns 133, Clippers 110: Over by Halftime in Phoenix"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
     return '<button type="button" class="reel" data-yt="'+r[0]+'" data-title="'+esc(r[1])+'" aria-label="Play: '+esc(r[1])+'">'+
