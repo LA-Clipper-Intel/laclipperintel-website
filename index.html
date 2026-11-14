@@ -56,13 +56,13 @@
     },
     {
       "@type": "VideoObject",
-      "name": "Clippers Snap the 7-Game Skid: Real Turnaround or One-Night Blip? Turnovers, Bench & Next 4 Games",
-      "description": "LA Clipper Intel breaks down the Clippers' 139-123 win over the Pelicans: turnovers, the bench and whether the skid is really over.",
-      "thumbnailUrl": "https://i.ytimg.com/vi/EWCujksHGHM/hqdefault.jpg",
-      "uploadDate": "2026-11-09T12:55:51-08:00",
-      "duration": "PT11M5S",
-      "embedUrl": "https://www.youtube-nocookie.com/embed/EWCujksHGHM",
-      "contentUrl": "https://www.youtube.com/watch?v=EWCujksHGHM",
+      "name": "Clippers Stun the Thunder 113-112. Now Do They SELL? Lopez, Jones, Dunn, Strus Trade Debate",
+      "description": "LA Clipper Intel breaks down the Clippers' 113-112 win over the Thunder, then runs the trade debate: should a 3-8 team sell Lopez, Jones, Dunn or Strus?",
+      "thumbnailUrl": "https://i.ytimg.com/vi/HeB9P5k9QwQ/hqdefault.jpg",
+      "uploadDate": "2026-11-14T09:03:15-08:00",
+      "duration": "PT11M54S",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/HeB9P5k9QwQ",
+      "contentUrl": "https://www.youtube.com/watch?v=HeB9P5k9QwQ",
       "publisher": { "@id": "https://laclipperintel.com/#organization" }
     }
   ]
@@ -409,9 +409,9 @@
   }catch(e){}
 
   var takes=[
+    ["Trade Debate","Clippers Stun the Thunder. Now Do They SELL?","A one-point win over OKC and SGA's 40 doesn't erase a 3-8 start. Lopez, Jones, Dunn, Strus: who goes, who stays, and what this front office should actually be shopping for.","https://www.youtube.com/watch?v=HeB9P5k9QwQ"],
     ["Game Breakdown","Clippers Snap the 7-Game Skid: Real Turnaround or One-Night Blip?","The 139-123 win over the Pelicans ended the losing streak. Turnovers, the bench and the next four games decide whether this is a turn or a blip, and I've got a verdict.","https://www.youtube.com/watch?v=EWCujksHGHM"],
-    ["Deep Dive","It's NOT the Threes: What's Really Behind the Slow Start","Possessions, the paint and the lineups. Forget the shooting slump narrative, here's where the games are actually being lost.","https://www.youtube.com/watch?v=vlf0KxkEwLQ"],
-    ["Front Office","Where the Kawhi Penalty Stands Now","$30M paid, five first-round picks gone, and the Raptors in town Nov 2. The full ledger of what this franchise is still paying for, explained the fun-GM way.","https://www.youtube.com/watch?v=Jni7ZXMt2RM"]
+    ["Deep Dive","It's NOT the Threes: What's Really Behind the Slow Start","Possessions, the paint and the lineups. Forget the shooting slump narrative, here's where the games are actually being lost.","https://www.youtube.com/watch?v=vlf0KxkEwLQ"]
   ];
   document.getElementById('takegrid').innerHTML = takes.map(function(t){
     return '<div class="takecard"><div class="kicker">'+t[0]+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p><a class="more" href="'+t[3]+'" target="_blank" rel="noopener">Watch on YouTube →</a></div>';
@@ -445,13 +445,13 @@
     if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
   });
 
-  // Real channel videos (verified via vidIQ 2026-11-13)
+  // Real channel videos (verified via vidIQ 2026-11-14)
   var reels=[
+    ["rDgPlU0vRtg","Clippers 113, Thunder 112: We Took Down OKC!"],
+    ["aSWhUy6bmto","Undrafted to Dunk Champion: Derrick Jones Jr's Journey"],
     ["m4OXE5-oOVs","Fun GM: Who Should the Clippers Actually Trade?"],
     ["Tqb9VJhwu6g","The Wildest Ownership Change in Clippers History"],
-    ["I04hRjbFTPk","Chauncey Billups: When Mr. Big Shot Joined Our Bench"],
-    ["Q1Fhpx9K61k","Ex-Clippers Watch: Patrick Beverley's Journey"],
-    ["QzfPv54Hel4","Suns 133, Clippers 110: Over by Halftime in Phoenix"]
+    ["I04hRjbFTPk","Chauncey Billups: When Mr. Big Shot Joined Our Bench"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
     return '<button type="button" class="reel" data-yt="'+r[0]+'" data-title="'+esc(r[1])+'" aria-label="Play: '+esc(r[1])+'">'+
@@ -462,10 +462,10 @@
   }).join('');
 
   var vids=[
+    ["HeB9P5k9QwQ","Clippers Stun the Thunder 113-112. Now Do They SELL? Lopez, Jones, Dunn, Strus Trade Debate","11:54"],
     ["EWCujksHGHM","Clippers Snap the 7-Game Skid: Real Turnaround or One-Night Blip?","11:05"],
     ["vlf0KxkEwLQ","Clippers Deep Dive: It's NOT the Threes: Possessions, the Paint & Lineups Behind the 1-5 Start","11:56"],
-    ["_oBZ8kKkvnw","Clippers 1-5: Week in Review & Outlook: The Second-Quarter Problem","14:00"],
-    ["7pHT1eijCs8","How to Watch the Clippers in 2026-27: ClipperVision, KTLA & the New Broadcast Team","11:57"]
+    ["_oBZ8kKkvnw","Clippers 1-5: Week in Review & Outlook: The Second-Quarter Problem","14:00"]
   ];
   var yp=document.getElementById('yplayer');
   yp.setAttribute('data-yt',vids[0][0]); yp.setAttribute('data-title',vids[0][1]);
