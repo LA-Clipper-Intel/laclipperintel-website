@@ -445,13 +445,13 @@
     if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
   });
 
-  // Real channel videos (verified via vidIQ 2026-11-16)
+  // Real channel videos (verified via vidIQ 2026-11-17)
   var reels=[
+    ["8ducun7ULts","Clippers Win 3 of 4 After a 1-7 Start"],
+    ["2L4CJWUA34Q","The Stat Behind the Clippers' Turnaround"],
     ["dcH-U40PQr8","Clippers 113, Hornets 105: Garland Runs the Show"],
     ["rDgPlU0vRtg","Clippers 113, Thunder 112: We Took Down OKC!"],
-    ["v-Q0YZ7reTk","Keaton Wagler: \"I'm an MJ Guy\" | Rookie Report"],
-    ["0bZ91dgvlHg","Larry Drew: The Champion on Our Coaching Staff"],
-    ["pvAeIqlIxYk","Should the Clippers Trade Jones Jr.? My Fun-GM Verdict"]
+    ["v-Q0YZ7reTk","Keaton Wagler: \"I'm an MJ Guy\" | Rookie Report"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
     return '<button type="button" class="reel" data-yt="'+r[0]+'" data-title="'+esc(r[1])+'" aria-label="Play: '+esc(r[1])+'">'+
