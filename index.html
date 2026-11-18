@@ -445,13 +445,13 @@
     if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
   });
 
-  // Real channel videos (verified via vidIQ 2026-11-17)
+  // Real channel videos (verified via vidIQ 2026-11-18)
   var reels=[
-    ["8ducun7ULts","Clippers Win 3 of 4 After a 1-7 Start"],
-    ["2L4CJWUA34Q","The Stat Behind the Clippers' Turnaround"],
-    ["dcH-U40PQr8","Clippers 113, Hornets 105: Garland Runs the Show"],
+    ["7srkzUsTA3U","Jazz 132, Clippers 107: Utah's 44-Point Fourth Buries LA"],
+    ["8Eu3pAseILs","Darius Garland: 20.4 PPG as the New Clippers Lead Guard"],
+    ["GRFriaWYEhY","The Trip That Unlocked Rui Hachimura's Career Year"],
     ["rDgPlU0vRtg","Clippers 113, Thunder 112: We Took Down OKC!"],
-    ["v-Q0YZ7reTk","Keaton Wagler: \"I'm an MJ Guy\" | Rookie Report"]
+    ["dcH-U40PQr8","Clippers 113, Hornets 105: Garland Runs the Show"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
     return '<button type="button" class="reel" data-yt="'+r[0]+'" data-title="'+esc(r[1])+'" aria-label="Play: '+esc(r[1])+'">'+
