@@ -56,13 +56,13 @@
     },
     {
       "@type": "VideoObject",
-      "name": "Clippers Win 3 of 4! Week in Review: Thunder Thriller, Hornets Comeback + Ingram Update",
-      "description": "LA Clipper Intel's week in review: the 113-112 win over the Thunder, the 113-105 comeback over the Hornets, a 4-8 record and the latest on Brandon Ingram.",
-      "thumbnailUrl": "https://i.ytimg.com/vi/BG9Cy_F3hb4/hqdefault.jpg",
-      "uploadDate": "2026-11-16T09:02:48-08:00",
-      "duration": "PT11M28S",
-      "embedUrl": "https://www.youtube-nocookie.com/embed/BG9Cy_F3hb4",
-      "contentUrl": "https://www.youtube.com/watch?v=BG9Cy_F3hb4",
+      "name": "Clippers Bench Is Winning, Starters Aren't: Lineup Deep Dive + How to Survive Wembanyama",
+      "description": "LA Clipper Intel's lineup deep dive: why the Clippers' bench units are winning their minutes while the starters aren't, and the game plan for Victor Wembanyama and the Spurs.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/PaHoU3FTuH0/hqdefault.jpg",
+      "uploadDate": "2026-11-19T09:03:33-08:00",
+      "duration": "PT10M21S",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/PaHoU3FTuH0",
+      "contentUrl": "https://www.youtube.com/watch?v=PaHoU3FTuH0",
       "publisher": { "@id": "https://laclipperintel.com/#organization" }
     }
   ]
@@ -409,9 +409,9 @@
   }catch(e){}
 
   var takes=[
+    ["Lineup Deep Dive","The Bench Is Winning. The Starters Aren't.","After the Jazz loss dropped LA to 4-9, I went lineup by lineup: which units are actually winning their minutes, which aren't, and how the Clippers survive Wembanyama in San Antonio.","https://www.youtube.com/watch?v=PaHoU3FTuH0"],
     ["Week in Review","Clippers Win 3 of 4: Is This Team Finally Turning It?","A one-point thriller over OKC, a 13-point third-quarter comeback on the Hornets, and a 4-8 record that suddenly looks fixable. Plus where Ingram's Achilles actually stands.","https://www.youtube.com/watch?v=BG9Cy_F3hb4"],
-    ["Trade Debate","Clippers Stun the Thunder. Now Do They SELL?","A one-point win over OKC and SGA's 40 doesn't erase a 3-8 start. Lopez, Jones, Dunn, Strus: who goes, who stays, and what this front office should actually be shopping for.","https://www.youtube.com/watch?v=HeB9P5k9QwQ"],
-    ["Game Breakdown","Clippers Snap the 7-Game Skid: Real Turnaround or One-Night Blip?","The 139-123 win over the Pelicans ended the losing streak. Turnovers, the bench and the next four games decide whether this is a turn or a blip, and I've got a verdict.","https://www.youtube.com/watch?v=EWCujksHGHM"]
+    ["Trade Debate","Clippers Stun the Thunder. Now Do They SELL?","A one-point win over OKC and SGA's 40 doesn't erase a 3-8 start. Lopez, Jones, Dunn, Strus: who goes, who stays, and what this front office should actually be shopping for.","https://www.youtube.com/watch?v=HeB9P5k9QwQ"]
   ];
   document.getElementById('takegrid').innerHTML = takes.map(function(t){
     return '<div class="takecard"><div class="kicker">'+t[0]+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p><a class="more" href="'+t[3]+'" target="_blank" rel="noopener">Watch on YouTube →</a></div>';
@@ -445,13 +445,13 @@
     if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
   });
 
-  // Real channel videos (verified via vidIQ 2026-11-18)
+  // Real channel videos (verified via vidIQ 2026-11-19)
   var reels=[
     ["7srkzUsTA3U","Jazz 132, Clippers 107: Utah's 44-Point Fourth Buries LA"],
-    ["8Eu3pAseILs","Darius Garland: 20.4 PPG as the New Clippers Lead Guard"],
-    ["GRFriaWYEhY","The Trip That Unlocked Rui Hachimura's Career Year"],
-    ["rDgPlU0vRtg","Clippers 113, Thunder 112: We Took Down OKC!"],
-    ["dcH-U40PQr8","Clippers 113, Hornets 105: Garland Runs the Show"]
+    ["fGPX7ytg84E","The Trade Nobody Wanted"],
+    ["8G7EVaABChA","Fun GM: The Jalen Pickett Buy-Low Special"],
+    ["OOOjjDc1QCk","Rookie Report: Nick Martinelli's Wild Draft Night"],
+    ["rDgPlU0vRtg","Clippers 113, Thunder 112: We Took Down OKC!"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
     return '<button type="button" class="reel" data-yt="'+r[0]+'" data-title="'+esc(r[1])+'" aria-label="Play: '+esc(r[1])+'">'+
@@ -462,10 +462,10 @@
   }).join('');
 
   var vids=[
+    ["PaHoU3FTuH0","Clippers Bench Is Winning, Starters Aren't: Lineup Deep Dive + How to Survive Wembanyama","10:21"],
     ["BG9Cy_F3hb4","Clippers Win 3 of 4! Week in Review: Thunder Thriller, Hornets Comeback + Ingram Update","11:28"],
     ["HeB9P5k9QwQ","Clippers Stun the Thunder 113-112. Now Do They SELL? Lopez, Jones, Dunn, Strus Trade Debate","11:54"],
-    ["EWCujksHGHM","Clippers Snap the 7-Game Skid: Real Turnaround or One-Night Blip?","11:05"],
-    ["vlf0KxkEwLQ","Clippers Deep Dive: It's NOT the Threes: Possessions, the Paint & Lineups Behind the 1-5 Start","11:56"]
+    ["EWCujksHGHM","Clippers Snap the 7-Game Skid: Real Turnaround or One-Night Blip?","11:05"]
   ];
   var yp=document.getElementById('yplayer');
   yp.setAttribute('data-yt',vids[0][0]); yp.setAttribute('data-title',vids[0][1]);
