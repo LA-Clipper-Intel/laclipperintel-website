@@ -56,13 +56,13 @@
     },
     {
       "@type": "VideoObject",
-      "name": "Clippers Bench Is Winning, Starters Aren't: Lineup Deep Dive + How to Survive Wembanyama",
-      "description": "LA Clipper Intel's lineup deep dive: why the Clippers' bench units are winning their minutes while the starters aren't, and the game plan for Victor Wembanyama and the Spurs.",
-      "thumbnailUrl": "https://i.ytimg.com/vi/PaHoU3FTuH0/hqdefault.jpg",
-      "uploadDate": "2026-11-19T09:03:33-08:00",
-      "duration": "PT10M21S",
-      "embedUrl": "https://www.youtube-nocookie.com/embed/PaHoU3FTuH0",
-      "contentUrl": "https://www.youtube.com/watch?v=PaHoU3FTuH0",
+      "name": "4-10 and Desperate: Can Brandon Ingram SAVE the Clippers' Season?",
+      "description": "The Clippers are 4-10 and Brandon Ingram is expected to debut Monday at Houston. LA Clipper Intel breaks down the numbers he walks into, both sides of the debate, a fun-GM verdict, the injury board and the Dallas game.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/G8sHNHm-fOA/hqdefault.jpg",
+      "uploadDate": "2026-11-21T09:02:26-08:00",
+      "duration": "PT12M2S",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/G8sHNHm-fOA",
+      "contentUrl": "https://www.youtube.com/watch?v=G8sHNHm-fOA",
       "publisher": { "@id": "https://laclipperintel.com/#organization" }
     }
   ]
@@ -409,9 +409,9 @@
   }catch(e){}
 
   var takes=[
+    ["Ingram Debate","4-10 and Desperate: Can Ingram Save This Season?","Brandon Ingram is expected to debut Monday at Houston. I ran the numbers he walks into, argued both sides, and gave my fun-GM verdict on whether the Kawhi trade centerpiece can dig LA out of 4-10.","https://www.youtube.com/watch?v=G8sHNHm-fOA"],
     ["Lineup Deep Dive","The Bench Is Winning. The Starters Aren't.","After the Jazz loss dropped LA to 4-9, I went lineup by lineup: which units are actually winning their minutes, which aren't, and how the Clippers survive Wembanyama in San Antonio.","https://www.youtube.com/watch?v=PaHoU3FTuH0"],
-    ["Week in Review","Clippers Win 3 of 4: Is This Team Finally Turning It?","A one-point thriller over OKC, a 13-point third-quarter comeback on the Hornets, and a 4-8 record that suddenly looks fixable. Plus where Ingram's Achilles actually stands.","https://www.youtube.com/watch?v=BG9Cy_F3hb4"],
-    ["Trade Debate","Clippers Stun the Thunder. Now Do They SELL?","A one-point win over OKC and SGA's 40 doesn't erase a 3-8 start. Lopez, Jones, Dunn, Strus: who goes, who stays, and what this front office should actually be shopping for.","https://www.youtube.com/watch?v=HeB9P5k9QwQ"]
+    ["Week in Review","Clippers Win 3 of 4: Is This Team Finally Turning It?","A one-point thriller over OKC, a 13-point third-quarter comeback on the Hornets, and a 4-8 record that suddenly looks fixable. Plus where Ingram's Achilles actually stands.","https://www.youtube.com/watch?v=BG9Cy_F3hb4"]
   ];
   document.getElementById('takegrid').innerHTML = takes.map(function(t){
     return '<div class="takecard"><div class="kicker">'+t[0]+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p><a class="more" href="'+t[3]+'" target="_blank" rel="noopener">Watch on YouTube →</a></div>';
@@ -444,12 +444,13 @@
     if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
   });
 
-  // Real channel videos (verified via vidIQ 2026-11-20)
+  // Real channel videos (verified via vidIQ + channel RSS 2026-11-21)
   var reels=[
+    ["NcPYvIp6O8M","Brandon Ingram's Clippers Debut Is Set for Monday"],
+    ["Dwgr_mdoNEI","He's Finally Back: Niederhäuser's Season Debut"],
+    ["iDsS2UZhia4","4 Fun GM Lineup Fixes for the Clippers"],
     ["XdycfK5FJxA","Spurs 124, Clippers 112: Wemby Owns the Paint"],
-    ["Sf4vpjowTLo","Clippers vs Spurs Preview: Can LA Survive Wemby Shorthanded?"],
     ["TvBafUT1mkA","Ty Lue Apologized to Our Rookie: Here's Why"],
-    ["CTPhRY0dtkY","The Clippers' Bench Won Them the Games"],
     ["rDgPlU0vRtg","Clippers 113, Thunder 112: We Took Down OKC!"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
@@ -461,10 +462,10 @@
   }).join('');
 
   var vids=[
+    ["G8sHNHm-fOA","4-10 and Desperate: Can Brandon Ingram SAVE the Clippers' Season?","12:02"],
     ["PaHoU3FTuH0","Clippers Bench Is Winning, Starters Aren't: Lineup Deep Dive + How to Survive Wembanyama","10:21"],
     ["BG9Cy_F3hb4","Clippers Win 3 of 4! Week in Review: Thunder Thriller, Hornets Comeback + Ingram Update","11:28"],
-    ["HeB9P5k9QwQ","Clippers Stun the Thunder 113-112. Now Do They SELL? Lopez, Jones, Dunn, Strus Trade Debate","11:54"],
-    ["EWCujksHGHM","Clippers Snap the 7-Game Skid: Real Turnaround or One-Night Blip?","11:05"]
+    ["HeB9P5k9QwQ","Clippers Stun the Thunder 113-112. Now Do They SELL? Lopez, Jones, Dunn, Strus Trade Debate","11:54"]
   ];
   var yp=document.getElementById('yplayer');
   yp.setAttribute('data-yt',vids[0][0]); yp.setAttribute('data-title',vids[0][1]);
