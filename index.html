@@ -56,13 +56,13 @@
     },
     {
       "@type": "VideoObject",
-      "name": "4-10 and Desperate: Can Brandon Ingram SAVE the Clippers' Season?",
-      "description": "The Clippers are 4-10 and Brandon Ingram is expected to debut Monday at Houston. LA Clipper Intel breaks down the numbers he walks into, both sides of the debate, a fun-GM verdict, the injury board and the Dallas game.",
-      "thumbnailUrl": "https://i.ytimg.com/vi/G8sHNHm-fOA/hqdefault.jpg",
-      "uploadDate": "2026-11-21T09:02:26-08:00",
-      "duration": "PT12M2S",
-      "embedUrl": "https://www.youtube-nocookie.com/embed/G8sHNHm-fOA",
-      "contentUrl": "https://www.youtube.com/watch?v=G8sHNHm-fOA",
+      "name": "Outscored by 37 in Fourth Quarters: Can Ingram SAVE the Clippers Tonight?",
+      "description": "The 4-11 Clippers have been outscored by 37 in fourth quarters. LA Clipper Intel previews Brandon Ingram's expected Clippers debut Monday at Houston and whether he can fix the late-game problem.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/EY7TtjxyxlY/hqdefault.jpg",
+      "uploadDate": "2026-11-23T09:03:15-08:00",
+      "duration": "PT12M50S",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/EY7TtjxyxlY",
+      "contentUrl": "https://www.youtube.com/watch?v=EY7TtjxyxlY",
       "publisher": { "@id": "https://laclipperintel.com/#organization" }
     }
   ]
@@ -409,9 +409,9 @@
   }catch(e){}
 
   var takes=[
+    ["Game Night","Outscored by 37 in Fourth Quarters: Can Ingram Fix It?","Ingram is expected to debut tonight at Houston. The Clippers have been outscored by 37 in fourth quarters, so I asked the only question that matters: can a real closer flip those late collapses?","https://www.youtube.com/watch?v=EY7TtjxyxlY"],
     ["Ingram Debate","4-10 and Desperate: Can Ingram Save This Season?","Brandon Ingram is expected to debut Monday at Houston. I ran the numbers he walks into, argued both sides, and gave my fun-GM verdict on whether the Kawhi trade centerpiece can dig LA out of 4-10.","https://www.youtube.com/watch?v=G8sHNHm-fOA"],
-    ["Lineup Deep Dive","The Bench Is Winning. The Starters Aren't.","After the Jazz loss dropped LA to 4-9, I went lineup by lineup: which units are actually winning their minutes, which aren't, and how the Clippers survive Wembanyama in San Antonio.","https://www.youtube.com/watch?v=PaHoU3FTuH0"],
-    ["Week in Review","Clippers Win 3 of 4: Is This Team Finally Turning It?","A one-point thriller over OKC, a 13-point third-quarter comeback on the Hornets, and a 4-8 record that suddenly looks fixable. Plus where Ingram's Achilles actually stands.","https://www.youtube.com/watch?v=BG9Cy_F3hb4"]
+    ["Lineup Deep Dive","The Bench Is Winning. The Starters Aren't.","After the Jazz loss dropped LA to 4-9, I went lineup by lineup: which units are actually winning their minutes, which aren't, and how the Clippers survive Wembanyama in San Antonio.","https://www.youtube.com/watch?v=PaHoU3FTuH0"]
   ];
   document.getElementById('takegrid').innerHTML = takes.map(function(t){
     return '<div class="takecard"><div class="kicker">'+t[0]+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p><a class="more" href="'+t[3]+'" target="_blank" rel="noopener">Watch on YouTube →</a></div>';
@@ -445,13 +445,13 @@
     if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
   });
 
-  // Real channel videos (verified via vidIQ + channel RSS 2026-11-21)
+  // Real channel videos (verified via vidIQ + oEmbed 2026-11-23)
   var reels=[
+    ["ZW5L5zD69m0","Brandon Ingram Debuts Tonight: What He Brings the Clippers"],
+    ["NZVi4ViY-ck","Outrebounded in 12 of 14: The Numbers Ingram Walks Into"],
+    ["P6CWERDnnwU","The Clippers Traded Away a Future 4x All-Star"],
     ["zYpTCXB5_L4","Mavericks 110, Clippers 100: Turnovers Sink LA in Dallas"],
-    ["NcPYvIp6O8M","Brandon Ingram's Clippers Debut Is Set for Monday"],
-    ["PvhNybaNGXg","Ingram Saves the Play-In Chase, Not the Season? My Verdict"],
     ["UU4eeHxG8cI","The Forgotten 39-Point Rookie"],
-    ["Dwgr_mdoNEI","He's Finally Back: Niederhäuser's Season Debut"],
     ["rDgPlU0vRtg","Clippers 113, Thunder 112: We Took Down OKC!"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
@@ -463,10 +463,10 @@
   }).join('');
 
   var vids=[
+    ["EY7TtjxyxlY","Outscored by 37 in Fourth Quarters: Can Ingram SAVE the Clippers Tonight?","12:50"],
     ["G8sHNHm-fOA","4-10 and Desperate: Can Brandon Ingram SAVE the Clippers' Season?","12:02"],
     ["PaHoU3FTuH0","Clippers Bench Is Winning, Starters Aren't: Lineup Deep Dive + How to Survive Wembanyama","10:21"],
-    ["BG9Cy_F3hb4","Clippers Win 3 of 4! Week in Review: Thunder Thriller, Hornets Comeback + Ingram Update","11:28"],
-    ["HeB9P5k9QwQ","Clippers Stun the Thunder 113-112. Now Do They SELL? Lopez, Jones, Dunn, Strus Trade Debate","11:54"]
+    ["BG9Cy_F3hb4","Clippers Win 3 of 4! Week in Review: Thunder Thriller, Hornets Comeback + Ingram Update","11:28"]
   ];
   var yp=document.getElementById('yplayer');
   yp.setAttribute('data-yt',vids[0][0]); yp.setAttribute('data-title',vids[0][1]);
