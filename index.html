@@ -445,14 +445,14 @@
     if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
   });
 
-  // Real channel videos (verified via vidIQ + oEmbed 2026-11-24)
+  // Real channel videos (verified via channel RSS + oEmbed 2026-11-25)
   var reels=[
+    ["zCMFEIKtQyU","Should the Clippers SELL? Lopez, Strus, Dunn, Jones Trade Watch"],
+    ["bnMSW0NzmC8","Brandon Ingram's Long-Awaited Clippers Debut"],
+    ["iHpeBJk69bc","The LA Clippers' First-Ever Playoff Win (1992)"],
     ["GerKtcvv4e4","Clippers 104, Rockets 116: Ingram Debuts in a Loss"],
     ["bOHJYn1vSdA","Even in First Halves, -90 After Halftime: The Clippers' 4th-Quarter Problem"],
-    ["foiBCbBfVCY","The Clippers Once Had a No. 1 Overall Pick... Off the Bench"],
-    ["P6CWERDnnwU","The Clippers Traded Away a Future 4x All-Star"],
-    ["NZVi4ViY-ck","Outrebounded in 12 of 14: The Numbers Ingram Walks Into"],
-    ["rDgPlU0vRtg","Clippers 113, Thunder 112: We Took Down OKC!"]
+    ["foiBCbBfVCY","The Clippers Once Had a No. 1 Overall Pick... Off the Bench"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
     return '<button type="button" class="reel" data-yt="'+r[0]+'" data-title="'+esc(r[1])+'" aria-label="Play: '+esc(r[1])+'">'+
