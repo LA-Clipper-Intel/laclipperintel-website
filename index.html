@@ -56,13 +56,13 @@
     },
     {
       "@type": "VideoObject",
-      "name": "Outscored by 37 in Fourth Quarters: Can Ingram SAVE the Clippers Tonight?",
-      "description": "The 4-11 Clippers have been outscored by 37 in fourth quarters. LA Clipper Intel previews Brandon Ingram's expected Clippers debut Monday at Houston and whether he can fix the late-game problem.",
-      "thumbnailUrl": "https://i.ytimg.com/vi/EY7TtjxyxlY/hqdefault.jpg",
-      "uploadDate": "2026-11-23T09:03:15-08:00",
-      "duration": "PT12M50S",
-      "embedUrl": "https://www.youtube-nocookie.com/embed/EY7TtjxyxlY",
-      "contentUrl": "https://www.youtube.com/watch?v=EY7TtjxyxlY",
+      "name": "Even at Halftime, Minus 90 After: Why Do the Clippers COLLAPSE in Second Halves?",
+      "description": "LA Clipper Intel went through ESPN play-by-play for the Clippers' first 15 games: -6 in first halves, -90 in second halves. Opponents get 45 more shots at the rim after halftime and shoot 57 more free throws.",
+      "thumbnailUrl": "https://i.ytimg.com/vi/s2sjkMUu0Ag/hqdefault.jpg",
+      "uploadDate": "2026-11-26T09:01:49-08:00",
+      "duration": "PT13M2S",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/s2sjkMUu0Ag",
+      "contentUrl": "https://www.youtube.com/watch?v=s2sjkMUu0Ag",
       "publisher": { "@id": "https://laclipperintel.com/#organization" }
     }
   ]
@@ -409,9 +409,9 @@
   }catch(e){}
 
   var takes=[
+    ["Second-Half Collapse","Minus 90 After Halftime: Why the Clippers Fold Late","I went through ESPN's play-by-play for the first 15 games: -6 in first halves, -90 in second halves. It isn't turnovers or threes. After the break, opponents get 45 more shots at the rim and 57 more free throws. Here's what I'd change.","https://www.youtube.com/watch?v=s2sjkMUu0Ag"],
     ["Game Night","Outscored by 37 in Fourth Quarters: Can Ingram Fix It?","Filmed before Ingram's debut: the Clippers had been outscored by 37 in fourth quarters, so I asked whether a real closer flips those late collapses. He debuted with 16 in a 116-104 loss at Houston. Was I right?","https://www.youtube.com/watch?v=EY7TtjxyxlY"],
-    ["Ingram Debate","4-10 and Desperate: Can Ingram Save This Season?","Before Ingram's Nov 23 debut, I ran the numbers he walked into, argued both sides, and gave my fun-GM verdict on whether the Kawhi trade centerpiece can dig LA out of 4-10.","https://www.youtube.com/watch?v=G8sHNHm-fOA"],
-    ["Lineup Deep Dive","The Bench Is Winning. The Starters Aren't.","After the Jazz loss dropped LA to 4-9, I went lineup by lineup: which units are actually winning their minutes, which aren't, and how the Clippers survive Wembanyama in San Antonio.","https://www.youtube.com/watch?v=PaHoU3FTuH0"]
+    ["Ingram Debate","4-10 and Desperate: Can Ingram Save This Season?","Before Ingram's Nov 23 debut, I ran the numbers he walked into, argued both sides, and gave my fun-GM verdict on whether the Kawhi trade centerpiece can dig LA out of 4-10.","https://www.youtube.com/watch?v=G8sHNHm-fOA"]
   ];
   document.getElementById('takegrid').innerHTML = takes.map(function(t){
     return '<div class="takecard"><div class="kicker">'+t[0]+'</div><h3>'+t[1]+'</h3><p>'+t[2]+'</p><a class="more" href="'+t[3]+'" target="_blank" rel="noopener">Watch on YouTube →</a></div>';
@@ -445,14 +445,14 @@
     if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
   });
 
-  // Real channel videos (verified via channel RSS + oEmbed 2026-11-25)
+  // Real channel videos (verified via channel RSS + oEmbed 2026-11-26)
   var reels=[
+    ["q7IEaYktHfA","Clippers 97, Grizzlies 115: Never Led Once"],
+    ["P-wqYf3dIVU","Fun GM: Should the Clippers Trade Darius Garland?"],
+    ["a2osM_wCZ_A","Ingram's Back: X-Factor or Too Late?"],
     ["zCMFEIKtQyU","Should the Clippers SELL? Lopez, Strus, Dunn, Jones Trade Watch"],
     ["bnMSW0NzmC8","Brandon Ingram's Long-Awaited Clippers Debut"],
-    ["iHpeBJk69bc","The LA Clippers' First-Ever Playoff Win (1992)"],
-    ["GerKtcvv4e4","Clippers 104, Rockets 116: Ingram Debuts in a Loss"],
-    ["bOHJYn1vSdA","Even in First Halves, -90 After Halftime: The Clippers' 4th-Quarter Problem"],
-    ["foiBCbBfVCY","The Clippers Once Had a No. 1 Overall Pick... Off the Bench"]
+    ["iHpeBJk69bc","The LA Clippers' First-Ever Playoff Win (1992)"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
     return '<button type="button" class="reel" data-yt="'+r[0]+'" data-title="'+esc(r[1])+'" aria-label="Play: '+esc(r[1])+'">'+
@@ -463,10 +463,10 @@
   }).join('');
 
   var vids=[
+    ["s2sjkMUu0Ag","Even at Halftime, Minus 90 After: Why Do the Clippers COLLAPSE in Second Halves?","13:02"],
     ["EY7TtjxyxlY","Outscored by 37 in Fourth Quarters: Can Ingram SAVE the Clippers Tonight?","12:50"],
     ["G8sHNHm-fOA","4-10 and Desperate: Can Brandon Ingram SAVE the Clippers' Season?","12:02"],
-    ["PaHoU3FTuH0","Clippers Bench Is Winning, Starters Aren't: Lineup Deep Dive + How to Survive Wembanyama","10:21"],
-    ["BG9Cy_F3hb4","Clippers Win 3 of 4! Week in Review: Thunder Thriller, Hornets Comeback + Ingram Update","11:28"]
+    ["PaHoU3FTuH0","Clippers Bench Is Winning, Starters Aren't: Lineup Deep Dive + How to Survive Wembanyama","10:21"]
   ];
   var yp=document.getElementById('yplayer');
   yp.setAttribute('data-yt',vids[0][0]); yp.setAttribute('data-title',vids[0][1]);
