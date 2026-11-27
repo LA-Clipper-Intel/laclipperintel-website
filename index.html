@@ -445,14 +445,14 @@
     if(b && b.tagName==='BUTTON' && !b.querySelector('iframe')){embed(b,b.getAttribute('data-yt'));}
   });
 
-  // Real channel videos (verified via channel RSS + oEmbed 2026-11-26)
+  // Real channel videos (verified via channel RSS + oEmbed 2026-11-27)
   var reels=[
+    ["mThxvtnfN5U","+86 at the Rim After Halftime: Where Clippers Games Are Lost"],
+    ["OsAWqCjCgfE","Even at Halftime, Minus 90 After: The Clippers' Second-Half Problem"],
+    ["O0y8sHHok_g","When Dominique Wilkins Played for the Clippers"],
     ["q7IEaYktHfA","Clippers 97, Grizzlies 115: Never Led Once"],
     ["P-wqYf3dIVU","Fun GM: Should the Clippers Trade Darius Garland?"],
-    ["a2osM_wCZ_A","Ingram's Back: X-Factor or Too Late?"],
-    ["zCMFEIKtQyU","Should the Clippers SELL? Lopez, Strus, Dunn, Jones Trade Watch"],
-    ["bnMSW0NzmC8","Brandon Ingram's Long-Awaited Clippers Debut"],
-    ["iHpeBJk69bc","The LA Clippers' First-Ever Playoff Win (1992)"]
+    ["a2osM_wCZ_A","Ingram's Back: X-Factor or Too Late?"]
   ];
   document.getElementById('reelrow').innerHTML = reels.map(function(r){
     return '<button type="button" class="reel" data-yt="'+r[0]+'" data-title="'+esc(r[1])+'" aria-label="Play: '+esc(r[1])+'">'+
